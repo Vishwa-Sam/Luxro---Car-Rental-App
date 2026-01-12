@@ -1,0 +1,85 @@
+<div class="bg-lime-300 text-black"
+     @contentFadeInOut>
+  <div class="max-w-7xl mx-auto px-6 py-20 ">
+
+    <button type="button"
+            (click)="goBack()"
+            class="bg-white text-center w-75 rounded-2xl h-14 relative text-black text-xl font-semibold group cursor-pointer mb-7">
+      <div
+           class="bg-green-400 rounded-xl h-12 w-1/4 flex items-center justify-center absolute left-1 top-1 group-hover:w-71 z-10 duration-500">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 1024 1024"
+             height="25"
+             width="25">
+          <path d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"
+                fill="#000000" />
+          <path d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z"
+                fill="#000000" />
+        </svg>
+      </div>
+      <p class="translate-x-6">Back to Insights</p>
+    </button>
+
+    @if (blog) {
+    <img [src]="blog.coverImage"
+         alt="{{ blog.title }}"
+         class="w-350 h-150 object-[50%_50%] rounded-2xl mb-10 " />
+
+    <div class="mb-6">
+      <span class="text-md text-gray-700 uppercase font-semibold">
+        {{ blog.category }}
+      </span>
+      <h1 class="text-4xl font-bold mt-2 mb-4">
+        {{ blog.title }}
+      </h1>
+      <p class="text-md text-gray-700">
+        {{ blog.author }} •
+        {{ blog.readTime }} min read
+      </p>
+    </div>
+
+    <!-- CONTENT -->
+    <article class="space-y-6 leading-relaxed text-gray-700">
+
+      @for (block of blog.content; track $index) {
+
+      @if (block.type === 'paragraph') {
+      <p class="text-2xl leading-relaxed">
+        {{ block.value }}
+      </p>
+      }
+
+      @if (block.type === 'heading') {
+      <h2 class="text-3xl font-semibold mt-10 mb-4">
+        {{ block.value }}
+      </h2>
+      }
+
+      @if (block.type === 'list') {
+      <ul class="list-disc pl-6 space-y-2 text-xl">
+        @for (item of block.value; track $index) {
+        <li>{{ item }}</li>
+        }
+      </ul>
+      }
+
+      @if (block.type === 'image') {
+      <figure class="my-10">
+        <img [src]="block.value"
+             class="rounded-4xl w-full h-150 object-contain"
+             alt="" />
+        @if (block.caption) {
+        <figcaption class="text-lg text-gray-700 mt-2 text-center fonnt-semibold">
+          {{ block.caption }}
+        </figcaption>
+        }
+      </figure>
+      }
+
+      }
+
+    </article>
+    }
+
+  </div>
+</div>

@@ -1,0 +1,98 @@
+<div class="notification price-summary-card sticky top-6">
+
+  <div class="notiglow"></div>
+  <div class="notiborderglow"></div>
+
+  <div class="notititle">
+    Price Summary
+  </div>
+
+  <div class="notibody space-y-6">
+
+    <div class="flex justify-between">
+      <span>Base Price</span>
+      <span>₹{{ basePrice() | number:'1.0-2' }}/hr</span>
+    </div>
+
+    <div class="flex justify-between">
+      <span>Insurance</span>
+      <span>₹{{ insurance() }}</span>
+    </div>
+
+    <div class="flex justify-between">
+      <span>Extra-Fees</span>
+      <span>₹{{ extrafees() }}</span>
+    </div>
+
+    <div class="flex justify-between">
+      <span>Taxes & Fees</span>
+      <span>₹{{ taxAmount() }}</span>
+    </div>
+
+    <!-- Discount -->
+    @if (discount() > 0) {
+    <div class="flex justify-between discount-row items-center">
+      <span>
+        Discount (10% off)
+        <span class="discount-info"
+              title="Applied because your rental duration is 24+ hours">ℹ️</span>
+      </span>
+      <span>-₹{{ basePrice() * discount() | number:'1.0-2' }}</span>
+    </div>
+    }
+
+    <hr class="price-divider">
+
+    <!-- Total -->
+    <div class="flex justify-between price-total">
+      <span>Total</span>
+      <span>
+        @if (discount() > 0) {
+        <span class="price-old mr-2">
+          ₹{{ basePrice() + insurance() + extrafees() + taxAmount() | number:'1.0-2' }}
+        </span>
+        }
+        ₹{{ totalAmount() | number:'1.0-2' }}
+      </span>
+    </div>
+    
+    <button type="button"
+            class="uiverse-button mt-4"
+            style="--clr: #00ad54;"
+            [disabled]="!car()"
+            (click)="onCheckout()">
+      <span class="button-decor"></span>
+
+      <div class="button-content">
+        <div class="button__icon">
+          <svg viewBox="0 0 50 50"
+               fill="none"
+               width="24">
+            <circle opacity="0.5"
+                    cx="25"
+                    cy="25"
+                    r="23"></circle>
+            <path fill="#fff"
+                  d="M34.42 15.93c.382-1.145-.706-2.234-1.851-1.852l-18.568 6.189c-1.186.395-1.362 2-.29 2.644l5.12 3.072a1.464 1.464 0 001.733-.167l5.394-4.854a1.464 1.464 0 011.958 2.177l-5.154 4.638a1.464 1.464 0 00-.276 1.841l3.101 5.17c.644 1.072 2.25.896 2.645-.29L34.42 15.93z">
+            </path>
+          </svg>
+        </div>
+
+        <span class="button__text">
+          Proceed to Rent
+        </span>
+      </div>
+    </button>
+
+  </div>
+</div>
+
+<!-- INFO NOTE-->
+<div class="relative mt-12 p-3 bg-blue-50
+         border-l-4 border-blue-500
+         rounded-md text-xl text-blue-700">
+  <span class="font-bold">Note:</span>
+  Extra fees shown above are
+  <span class="font-xl">refundable security deposits</span>
+  and will be returned after the car is safely returned following inspection.
+</div>

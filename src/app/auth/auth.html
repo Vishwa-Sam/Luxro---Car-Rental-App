@@ -1,0 +1,332 @@
+<div class="min-h-screen flex items-center justify-center px-4">
+  <div class="card">
+    <input class="blind-check"
+           type="checkbox"
+           id="blind-input"
+           hidden />
+
+    <!-- ================= FORM ================= -->
+    <form #authForm="ngForm"
+          (ngSubmit)="onSubmit(authForm)"
+          class="form space-y-5">
+
+      @if (errorMessage()) {
+      <div
+           class="relative w-full rounded-lg border border-red-300 bg-red-50 p-4 text-sm text-red-700 flex items-start gap-3 shadow-sm">
+
+        <span class="text-red-600 text-lg">❗</span>
+
+        <span class="flex-1">
+          {{ errorMessage() }}
+        </span>
+
+        <button (click)="onCloseError()"
+                class="absolute right-3 top-3 text-red-500 hover:text-red-700">
+          ✖
+        </button>
+
+      </div>
+      }
+
+      <!-- LOGIN -->
+      @if (isLoginPage) {
+      <div class="space-y-6">
+
+        <h2 class="title text-center">Welcome Back</h2>
+
+        <label class="label_input">Email</label>
+        <input type="email"
+               name="email"
+               ngModel
+               required
+               class="input" />
+
+        <label class="label_input ">Password</label>
+        <div class="password-wrapper">
+          <input type="text"
+                 name="password"
+                 ngModel
+                 required
+                 minlength="8"
+                 class="input password-input" />
+
+          <label for="blind-input"
+                 class="password-toggle">
+            <span class="show-text">Show</span>
+            <span class="hide-text">Hide</span>
+          </label>
+
+        </div>
+
+        <div class="text-right text-sm -mt-7">
+          <a href="#"
+             class="text-blue-600 hover:underline">Forgot password?</a>
+        </div>
+
+        <div class="log-btn">
+          <button type="submit"
+                  class="c-button c-button--gooey"
+                  [disabled]="!authForm.valid">
+            Login
+            <div class="c-button__blobs">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </button>
+
+          <button type="button"
+                  class="c-button c-button--gooey secondary-gooey"
+                  (click)="onSwitchPage()">
+            Switch to Sign Up
+            <div class="c-button__blobs">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </button>
+        </div>
+
+        <p class="text-center text-lg text-gray-600">
+          New here?
+          <span class="text-black text-lg hover:underline cursor-pointer">
+            Create an account
+          </span>
+          <a class="cursor-pointer text-blue-600 hover:underline"
+             (click)="onSwitchPage()"> - Sign Up</a>
+        </p>
+      </div>
+      }
+
+      <!-- SIGN UP -->
+      @if (!isLoginPage) {
+      <div class="space-y-6">
+
+        <h2 class="title text-center">Create Account</h2>
+
+        <label class="label_input">Email</label>
+        <input type="email"
+               name="email"
+               ngModel
+               required
+               class="input" />
+
+        <label class="label_input">Name</label>
+        <input type="text"
+               name="name"
+               ngModel
+               required
+               class="input" />
+
+        <div class="password-row">
+
+          <div class="password-col">
+            <label class="label_input">Password</label>
+            <div class="password-wrapper">
+              <input type="text"
+                     name="password"
+                     ngModel
+                     required
+                     minlength="8"
+                     class="input password-input" />
+
+              <label for="blind-input"
+                     class="password-toggle">
+                <span class="show-text">Show</span>
+                <span class="hide-text">Hide</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="password-col">
+            <label class="label_input">Confirm Password</label>
+            <div class="password-wrapper">
+              <input type="text"
+                     name="confirmPassword"
+                     ngModel
+                     required
+                     minlength="8"
+                     class="input password-input" />
+
+              <label for="blind-input"
+                     class="password-toggle">
+                <span class="show-text">Show</span>
+                <span class="hide-text">Hide</span>
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="text-md text-gray-600 bg-red-200 leading-relaxed space-y-1 p-6 rounded-4xl">
+          <p class="font-bold text-gray-700">
+            Password must contain:
+          </p>
+
+          <ul class="list-disc list-inside space-y-1 text-gray-600">
+            <li>At least 1 uppercase letter (A–Z)</li>
+            <li>At least 1 lowercase letter (a–z)</li>
+            <li>At least 1 number (0–9)</li>
+            <li>At least 1 special character (!@#$%^&*)</li>
+            <li>Minimum 8 and maximum 25 characters</li>
+          </ul>
+        </div>
+
+        <div class="space-y-2 text-lg text-gray-600">
+          <label class="flex items-center gap-2">
+            <input type="checkbox"
+                   class="accent-green-600 cursor-pointer" />
+            Remember me
+          </label>
+
+          <label class="flex items-center gap-2">
+            <input type="checkbox"
+                   class="accent-green-600 cursor-pointer" />
+            I agree to the terms & privacy policy
+          </label>
+        </div>
+
+        <button type="submit"
+                class="c-button c-button--gooey w-full"
+                [disabled]="!authForm.valid || !passwordsMatch">
+          Sign Up
+          <div class="c-button__blobs">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </button>
+
+        <button type="button"
+                class="c-button c-button--gooey secondary-gooey w-full"
+                (click)="onSwitchPage()">
+          Switch to Login
+          <div class="c-button__blobs">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </button>
+
+        <p class="text-center text-lg text-gray-600">
+          Already have an account?
+          <span (click)="onSwitchPage()"
+                class="text-green-600 text-lg hover:underline cursor-pointer">
+            Log In
+          </span> <a class="text-green-600 hover:underline  cursor-pointer"
+             (click)="onSwitchPage()"></a>
+        </p>
+      </div>
+      }
+
+    </form>
+    <label for="blind-input"
+           class="avatar">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           width="35"
+           height="35"
+           viewBox="0 0 64 64"
+           id="monkey">
+        <ellipse cx="53.7"
+                 cy="33"
+                 rx="8.3"
+                 ry="8.2"
+                 fill="#89664c"></ellipse>
+        <ellipse cx="53.7"
+                 cy="33"
+                 rx="5.4"
+                 ry="5.4"
+                 fill="#ffc5d3"></ellipse>
+        <ellipse cx="10.2"
+                 cy="33"
+                 rx="8.2"
+                 ry="8.2"
+                 fill="#89664c"></ellipse>
+        <ellipse cx="10.2"
+                 cy="33"
+                 rx="5.4"
+                 ry="5.4"
+                 fill="#ffc5d3"></ellipse>
+        <g fill="#89664c">
+          <path
+                d="m43.4 10.8c1.1-.6 1.9-.9 1.9-.9-3.2-1.1-6-1.8-8.5-2.1 1.3-1 2.1-1.3 2.1-1.3-20.4-2.9-30.1 9-30.1 19.5h46.4c-.7-7.4-4.8-12.4-11.8-15.2">
+          </path>
+          <path
+                d="m55.3 27.6c0-9.7-10.4-17.6-23.3-17.6s-23.3 7.9-23.3 17.6c0 2.3.6 4.4 1.6 6.4-1 2-1.6 4.2-1.6 6.4 0 9.7 10.4 17.6 23.3 17.6s23.3-7.9 23.3-17.6c0-2.3-.6-4.4-1.6-6.4 1-2 1.6-4.2 1.6-6.4">
+          </path>
+        </g>
+        <path d="m52 28.2c0-16.9-20-6.1-20-6.1s-20-10.8-20 6.1c0 4.7 2.9 9 7.5 11.7-1.3 1.7-2.1 3.6-2.1 5.7 0 6.1 6.6 11 14.7 11s14.7-4.9 14.7-11c0-2.1-.8-4-2.1-5.7 4.4-2.7 7.3-7 7.3-11.7"
+              fill="#e0ac7e"></path>
+        <g fill="#3b302a"
+           class="monkey-eye-nose">
+          <path d="m35.1 38.7c0 1.1-.4 2.1-1 2.1-.6 0-1-.9-1-2.1 0-1.1.4-2.1 1-2.1.6.1 1 1 1 2.1"></path>
+          <path d="m30.9 38.7c0 1.1-.4 2.1-1 2.1-.6 0-1-.9-1-2.1 0-1.1.4-2.1 1-2.1.5.1 1 1 1 2.1"></path>
+          <ellipse cx="40.7"
+                   cy="31.7"
+                   rx="3.5"
+                   ry="4.5"
+                   class="monkey-eye-r"></ellipse>
+          <ellipse cx="23.3"
+                   cy="31.7"
+                   rx="3.5"
+                   ry="4.5"
+                   class="monkey-eye-l"></ellipse>
+        </g>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg"
+           width="35"
+           height="35"
+           viewBox="0 0 64 64"
+           id="monkey-hands">
+        <path fill="#89664C"
+              d="M9.4,32.5L2.1,61.9H14c-1.6-7.7,4-21,4-21L9.4,32.5z"></path>
+        <path fill="#FFD6BB"
+              d="M15.8,24.8c0,0,4.9-4.5,9.5-3.9c2.3,0.3-7.1,7.6-7.1,7.6s9.7-8.2,11.7-5.6c1.8,2.3-8.9,9.8-8.9,9.8
+	s10-8.1,9.6-4.6c-0.3,3.8-7.9,12.8-12.5,13.8C11.5,43.2,6.3,39,9.8,24.4C11.6,17,13.3,25.2,15.8,24.8"></path>
+        <path fill="#89664C"
+              d="M54.8,32.5l7.3,29.4H50.2c1.6-7.7-4-21-4-21L54.8,32.5z"></path>
+        <path fill="#FFD6BB"
+              d="M48.4,24.8c0,0-4.9-4.5-9.5-3.9c-2.3,0.3,7.1,7.6,7.1,7.6s-9.7-8.2-11.7-5.6c-1.8,2.3,8.9,9.8,8.9,9.8
+	s-10-8.1-9.7-4.6c0.4,3.8,8,12.8,12.6,13.8c6.6,1.3,11.8-2.9,8.3-17.5C52.6,17,50.9,25.2,48.4,24.8"></path>
+      </svg>
+    </label>
+  </div>
+</div>
+
+<!-- Toast -->
+@if (showToast()) {
+<div class="fixed bottom-5 right-5 bg-green-600 text-white px-4 py-3 rounded-lg shadow-lg
+           animate-slide-up fade-in text-sm flex items-center gap-2">
+  <span>✔</span>
+  <span>{{ toastMessage() }}</span>
+</div>
+}
+
+<!-- Loader -->
+@if (isLoading()) {
+<div>
+  <app-load-spinner></app-load-spinner>
+</div>
+}
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     version="1.1"
+     style="display: block; height: 0; width: 0;">
+  <defs>
+    <filter id="goo">
+      <feGaussianBlur in="SourceGraphic"
+                      stdDeviation="10"
+                      result="blur" />
+      <feColorMatrix in="blur"
+                     mode="matrix"
+                     values="
+                       1 0 0 0 0
+                       0 1 0 0 0
+                       0 0 1 0 0
+                       0 0 0 18 -7"
+                     result="goo" />
+      <feBlend in="SourceGraphic"
+               in2="goo" />
+    </filter>
+  </defs>
+</svg>

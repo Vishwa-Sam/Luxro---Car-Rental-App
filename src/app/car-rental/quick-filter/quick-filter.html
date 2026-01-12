@@ -1,0 +1,83 @@
+<div class="p-4 rounded-xl shadow flex flex-wrap gap-5">
+  <!-- All -->
+  <button (click)="selectedQuickFilter('ALL')"
+          class="uiverse-btn w-36 h-14 flex items-center justify-center gap-2"
+          [ngClass]="active() === 'ALL' ? 'active' : ''">
+    <img src="../../../assets/icons/quick-filter/sliders-horizontal.svg"
+         class="w-5 h-5" />
+    All
+  </button>
+
+  <!-- Automatic -->
+  <button (click)="selectedQuickFilter('AUTOMATIC')"
+          class="uiverse-btn w-36 h-14 flex items-center justify-center gap-2"
+          [ngClass]="active() === 'AUTOMATIC' ? 'active' : ''">
+    <img src="../../../assets/icons/quick-filter/settings.svg"
+         class="w-5 h-5" />
+    Automatic
+  </button>
+
+  <!-- Diesel -->
+  <button (click)="selectedQuickFilter('DIESEL')"
+          class="uiverse-btn w-36 h-14 flex items-center justify-center gap-2"
+          [ngClass]="active() === 'DIESEL' ? 'active' : ''">
+    <img src="../../../assets/icons/quick-filter/fuel.svg"
+         class="w-5 h-5" />
+    Diesel
+  </button>
+
+  <!-- Home Delivery -->
+  <button (click)="selectedQuickFilter('DELIVERY')"
+          class="uiverse-btn w-40 h-14 flex items-center justify-center gap-2"
+          [ngClass]="active() === 'DELIVERY' ? 'active' : ''">
+    <img src="../../../assets/icons/quick-filter/truck.svg"
+         class="w-5 h-5" />
+    Home Delivery
+  </button>
+
+  <!-- 4.5+ Rated -->
+  <button (click)="selectedQuickFilter('RATING_4_5')"
+          class="uiverse-btn w-36 h-14 flex items-center justify-center gap-2"
+          [ngClass]="active() === 'RATING_4_5' ? 'active' : ''">
+    <img src="../../../assets/icons/quick-filter/star.svg"
+         class="w-5 h-5" />
+    4.5+ Rated
+  </button>
+
+  <!-- Luxury -->
+  <button (click)="selectedQuickFilter('LUXURY')"
+          class="uiverse-btn w-36 h-14 flex items-center justify-center gap-2"
+          [ngClass]="active() === 'LUXURY' ? 'active' : ''">
+    <img src="../../../assets/icons/quick-filter/crown.svg"
+         class="w-5 h-5" />
+    Luxury
+  </button>
+
+  <!-- SUV -->
+  <button (click)="selectedQuickFilter('SUV')"
+          class="uiverse-btn w-36 h-14 flex items-center justify-center gap-2"
+          [ngClass]="active() === 'SUV' ? 'active' : ''">
+    <img src="../../../assets/icons/quick-filter/car.svg"
+         class="w-5 h-5" />
+    SUV
+  </button>
+
+  <!-- Electric -->
+  <button (click)="selectedQuickFilter('ELECTRIC')"
+          class="uiverse-btn w-36 h-14 flex items-center justify-center gap-2"
+          [ngClass]="active() === 'ELECTRIC' ? 'active' : ''">
+    <img src="../../../assets/icons/quick-filter/battery-charging.svg"
+         class="w-5 h-5" />
+    Electric
+  </button>
+
+  <!-- Sedan -->
+  <button (click)="selectedQuickFilter('SEDAN')"
+          class="uiverse-btn w-36 h-14 flex items-center justify-center gap-2"
+          [ngClass]="active() === 'SEDAN' ? 'active' : ''">
+    <img src="../../../assets/icons/quick-filter/car-front.svg"
+         class="w-5 h-5" />
+    Sedan
+  </button>
+
+</div>

@@ -1,0 +1,414 @@
+/* ===== CARD ==== */
+
+.min-h-screen {
+  min-height: 102vh;
+  background-image: url('../../assets/auth-form.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 4rem;
+}
+
+.min-h-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.4);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.card {
+  --p: 32px;
+  width: 680px;
+  max-width: 100%;
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--p);
+  position: relative;
+  padding-top: 30px;
+  overflow: hidden;
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+/* ==== FORM ==== */
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 11rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+/* ==== LABELS & INPUTS ===== */
+
+.label_input {
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 6px;
+  border: 1px solid #8f8f8f;
+  font-size: 16px;
+  margin: 1rem 0;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #0969da;
+  box-shadow: 0 0 0 2px #0969da;
+}
+
+#password-input {
+  padding-right: 80px;
+}
+
+.password-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.frg_pss {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.frg_pss a {
+  font-size: 0.85rem;
+  text-decoration: underline;
+  color: #555;
+}
+
+.submit {
+  margin-top: 1rem;
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+  cursor: pointer;
+  background: #f5f5f5;
+  font-weight: 600;
+}
+
+.submit:hover {
+  background: #eee;
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-box {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 0.6rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+.blind_input {
+  display: none;
+}
+
+.blind-check:checked ~ .form input[type='password'] {
+  -webkit-text-security: disc;
+}
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper .input {
+  padding-right: 70px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: #0969da;
+  user-select: none;
+}
+
+.password-toggle:hover {
+  text-decoration: underline;
+}
+
+.password-toggle .hide-text {
+  display: none;
+}
+
+.blind-check:checked ~ .form .password-toggle .show-text {
+  display: none;
+}
+
+.blind-check:checked ~ .form .password-toggle .hide-text {
+  display: inline;
+}
+
+.password-input {
+  -webkit-text-security: disc;
+}
+
+.blind-check:checked ~ .form .password-input {
+  -webkit-text-security: none;
+}
+
+/* ==== AVATAR ==== */
+
+.avatar {
+  --sz-avatar: 166px;
+  order: 0;
+  width: var(--sz-avatar);
+  min-width: var(--sz-avatar);
+  max-width: var(--sz-avatar);
+  height: var(--sz-avatar);
+  min-height: var(--sz-avatar);
+  max-height: var(--sz-avatar);
+  border: 1px solid #707070;
+  border-radius: 9999px;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 2;
+  perspective: 80px;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --sz-svg: calc(var(--sz-avatar) - 10px);
+}
+
+.avatar svg {
+  position: absolute;
+  transition: transform 0.2s ease-in, opacity 0.1s;
+  transform-origin: 50% 100%;
+  height: var(--sz-svg);
+  width: var(--sz-svg);
+  pointer-events: none;
+}
+
+.avatar svg#monkey {
+  z-index: 1;
+}
+
+.avatar svg#monkey-hands {
+  z-index: 2;
+  transform-style: preserve-3d;
+  transform: translateY(calc(var(--sz-avatar) / 1.25)) rotateX(-21deg);
+}
+
+.avatar::before {
+  content: '';
+  border-radius: 45%;
+  width: calc(var(--sz-svg) / 3.889);
+  height: calc(var(--sz-svg) / 5.833);
+  border-bottom: calc(var(--sz-svg) * (4 / 100)) solid #3c302a;
+  bottom: 20%;
+  position: absolute;
+  transition: all 0.2s ease;
+  z-index: 3;
+}
+
+.blind-check:checked ~ .avatar::before {
+  width: calc(var(--sz-svg) * (9 / 100));
+  height: 0;
+  border-radius: 50%;
+  border-bottom: calc(var(--sz-svg) * (10 / 100)) solid #3c302a;
+}
+
+.avatar svg#monkey .monkey-eye-r,
+.avatar svg#monkey .monkey-eye-l {
+  animation: blink 10s 1s infinite;
+  transition: all 0.2s ease;
+}
+
+@keyframes blink {
+  0%,
+  2%,
+  4%,
+  26%,
+  28%,
+  71%,
+  73%,
+  100% {
+    ry: 4.5;
+    cy: 31.7;
+  }
+  1%,
+  3%,
+  27%,
+  72% {
+    ry: 0.5;
+    cy: 30;
+  }
+}
+
+.blind-check:checked ~ .avatar svg#monkey .monkey-eye-r,
+.blind-check:checked ~ .avatar svg#monkey .monkey-eye-l {
+  ry: 0.5;
+  cy: 30;
+}
+
+.blind-check:checked ~ .avatar svg#monkey-hands {
+  transform: translate3d(0, 0, 0) rotateX(0deg);
+}
+
+.avatar svg#monkey,
+.avatar::before,
+.avatar svg#monkey .monkey-eye-nose,
+.avatar svg#monkey .monkey-eye-r,
+.avatar svg#monkey .monkey-eye-l {
+  transition: all 0.2s ease;
+}
+
+.blind-check:checked ~ .form:focus-within ~ .avatar svg#monkey,
+.blind-check:checked ~ .form:focus-within ~ .avatar::before,
+.blind-check:checked ~ .form:focus-within ~ .avatar svg#monkey .monkey-eye-nose,
+.blind-check:checked ~ .form:focus-within ~ .avatar svg#monkey .monkey-eye-r,
+.blind-check:checked ~ .form:focus-within ~ .avatar svg#monkey .monkey-eye-l {
+  animation: none;
+}
+
+.form:focus-within ~ .avatar svg#monkey {
+  animation: slick 3s ease infinite 1s;
+  --center: rotateY(0deg);
+  --left: rotateY(-4deg);
+  --right: rotateY(4deg);
+}
+
+.form:focus-within ~ .avatar::before,
+.form:focus-within ~ .avatar svg#monkey .monkey-eye-nose,
+.blind-check:not(:checked) ~ .form:focus-within ~ .avatar svg#monkey .monkey-eye-r,
+.blind-check:not(:checked) ~ .form:focus-within ~ .avatar svg#monkey .monkey-eye-l {
+  ry: 3;
+  cy: 35;
+  animation: slick 3s ease infinite 1s;
+  --center: translateX(0);
+  --left: translateX(-0.5px);
+  --right: translateX(0.5px);
+}
+
+@keyframes slick {
+  0%,
+  100% {
+    transform: var(--center);
+  }
+  25% {
+    transform: var(--left);
+  }
+  75% {
+    transform: var(--right);
+  }
+}
+
+/* ==== BUTTON (UIVERSE) === */
+
+.c-button {
+  color: #000;
+  font-weight: 700;
+  font-size: 16px;
+  width: 100%;
+  text-decoration: none;
+  padding: 0.9em 1.6em;
+  cursor: pointer;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+.c-button--gooey {
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 4px solid #111111;
+  position: relative;
+  transition: all 700ms ease;
+}
+
+.c-button--gooey .c-button__blobs {
+  height: 100%;
+  filter: url(#goo);
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: -3px;
+  right: -1px;
+  z-index: -1;
+}
+
+.c-button--gooey .c-button__blobs div {
+  background-color: #000000;
+  width: 34%;
+  height: 100%;
+  border-radius: 100%;
+  position: absolute;
+  transform: scale(1.4) translateY(125%) translateZ(0);
+  transition: all 700ms ease;
+}
+
+.c-button--gooey .c-button__blobs div:nth-child(1) {
+  left: -5%;
+}
+
+.c-button--gooey .c-button__blobs div:nth-child(2) {
+  left: 30%;
+  transition-delay: 60ms;
+}
+
+.c-button--gooey .c-button__blobs div:nth-child(3) {
+  left: 66%;
+  transition-delay: 25ms;
+}
+
+.c-button--gooey:hover {
+  color: #fff;
+}
+
+.c-button--gooey:hover .c-button__blobs div {
+  transform: scale(1.4) translateY(0) translateZ(0);
+}
+
+.secondary-gooey {
+  margin-top: 0.75rem;
+}
+
+.c-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

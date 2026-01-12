@@ -1,0 +1,196 @@
+/* From Uiverse.io by Creatlydev (adapted) */
+.uiverse-button {
+  width: 100%;
+  text-decoration: none;
+  line-height: 1;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 10px 10px 20px rgba(0,0,0,.15);
+  background-color: #fff;
+  color: #121212;
+  border: none;
+  cursor: pointer;
+}
+
+.uiverse-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button-decor {
+  position: absolute;
+  inset: 0;
+  background-color: var(--clr);
+  transform: translateX(-100%);
+  transition: transform .8s ease;
+  z-index: 0;
+}
+
+.button-content {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.button__icon {
+  width: 48px;
+  height: 40px;
+  background-color: var(--clr);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.button__text {
+  display: inline-block;
+  transition: color .2s ease;
+  padding: 0.5rem 1.5rem 0.5rem 0.75rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.uiverse-button:hover:not(:disabled) .button__text {
+  color: #fff;
+}
+
+.uiverse-button:hover:not(:disabled) .button-decor {
+  transform: translateX(0);
+}
+
+
+/* Uiverse Plan Card (adapted for price summary) */
+/* ================================
+   NOTIFICATION CARD BASE (Uiverse)
+================================ */
+.notification {
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+  position: relative;
+  width: 110%;
+  height: auto;
+  background: #29292c;
+  border-radius: 1rem;
+  overflow: hidden;
+  font-size: 16px;
+
+  --gradient: linear-gradient(to bottom, #2eadff, #3d83ff, #7e61ff);
+  --color: #32a6ff;
+}
+
+.notification::before {
+  position: absolute;
+  content: "";
+  inset: 0.0625rem;
+  border-radius: 0.9375rem;
+  background: #18181b;
+  z-index: 2;
+}
+
+.notification::after {
+  position: absolute;
+  content: "";
+  width: 0.25rem;
+  inset: 0.65rem auto 0.65rem 0.5rem;
+  border-radius: 0.125rem;
+  background: var(--gradient);
+  transition: transform 300ms ease;
+  z-index: 4;
+}
+
+.notification:hover::after {
+  transform: translateX(0.15rem);
+}
+
+.notititle {
+  color: var(--color);
+  padding: 1rem 1.25rem 0.5rem 1.75rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  z-index: 5;
+  transition: transform 300ms ease;
+}
+
+.notification:hover .notititle {
+  transform: translateX(0.15rem);
+}
+
+.notibody {
+  color: #c7c7cc;
+  padding: 0 1.75rem 1rem;
+  z-index: 5;
+  transition: transform 300ms ease;
+}
+
+.notification:hover .notibody {
+  transform: translateX(0.25rem);
+}
+
+/* Glow */
+.notiglow,
+.notiborderglow {
+  position: absolute;
+  width: 20rem;
+  height: 20rem;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle closest-side at center, white, transparent);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.notiglow {
+  z-index: 3;
+}
+
+.notiborderglow {
+  z-index: 1;
+}
+
+.notification:hover .notiglow,
+.notification:hover .notiborderglow {
+  opacity: 0.1;
+}
+
+/* ================================
+   PRICE SUMMARY TEXT STYLES
+================================ */
+.price-divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  margin: 0.75rem 0;
+}
+
+.price-total {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.price-old {
+  color: #acabab;
+  text-decoration: line-through;
+}
+
+.discount-row {
+  color: #4ade80;
+  font-weight: 600;
+}
+
+.discount-info {
+  font-size: 0.8rem;
+  margin-left: 0.25rem;
+  cursor: help;
+}
+
+.notiglow,
+.notiborderglow {
+  pointer-events: none;
+}
+
+.notification button {
+  position: relative;
+  z-index: 6;
+}

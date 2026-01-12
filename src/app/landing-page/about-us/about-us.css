@@ -1,0 +1,385 @@
+.luxro-card {
+  width: 100%;
+  height: 300px;
+  background: #0b1220;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.luxro-card::before {
+  content: '';
+  position: absolute;
+  width: 140px;
+  height: 160%;
+  background-image: linear-gradient(180deg, #00eeff, /* lime */ #ff09d6 /* green */);
+  animation: rotBGimg 6s linear infinite;
+}
+
+.luxro-card::after {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  background: #595c69;
+  border-radius: 17px;
+}
+
+.luxro-card-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 24px;
+  color: rgb(255, 255, 255);
+}
+
+@keyframes rotBGimg {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* how it works functionality cards */
+
+.card {
+  position: relative;
+  width: 280px;   /* ⬅ increased */
+  height: 340px;
+  border-radius: 14px;
+  z-index: 1111;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+   width: 268px;   /* card width - 12px */
+  height: 328px;
+  z-index: 2;
+  background: #0f172a;
+  backdrop-filter: blur(24px);
+  border-radius: 10px;
+  overflow: hidden;
+  outline: 2px solid white;
+
+  /* content alignment */
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.blob {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  border-radius: 70%;
+  background-color: #ff0000;
+  opacity: 1;
+  filter: blur(10px);
+  animation: blob-bounce 5s infinite ease;
+}
+
+@keyframes blob-bounce {
+  0% {
+    transform: translate(-100%, -100%) translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: translate(-100%, -100%) translate3d(100%, 0, 0);
+  }
+
+  50% {
+    transform: translate(-100%, -100%) translate3d(100%, 100%, 0);
+  }
+
+  75% {
+    transform: translate(-100%, -100%) translate3d(0, 100%, 0);
+  }
+
+  100% {
+    transform: translate(-100%, -100%) translate3d(0, 0, 0);
+  }
+}
+
+
+/* core values */
+
+.cards {
+  display: flex;
+  flex-direction: row; /* ⬅ horizontal instead of vertical */
+  gap: 95px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cards .c1 { background-color: #64748b; } /* Slate */
+.cards .c2 { background-color: #0f766e; } /* Teal */
+.cards .c3 { background-color: #166534; } /* Forest */
+.cards .c4 { background-color: #854d0e; } /* Bronze */
+.cards .c5 { background-color: #7c2d12; } /* Maroon */
+
+
+
+
+.cards .card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  height: 250px;
+  width: 250px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: 400ms;
+}
+
+.cards .card p.tip {
+  font-size: 1.3em;
+  font-weight: 700;
+  padding-bottom: 15px;
+  text-decoration: underline;
+  text-underline-offset: 8px;
+}
+
+.cards .card p.second-text {
+  font-size: .7em;
+  padding: 5px 15px;
+}
+
+.cards .card:hover {
+  transform: scale(1.1, 1.1);
+}
+
+.cards:hover > .card:not(:hover) {
+  filter: blur(10px);
+  transform: scale(0.9, 0.9);
+}
+
+/* buttons */
+
+.btn-cta {
+  width: 200px;
+  height: 44px;
+  border: none;
+  border-radius: 10px;
+
+  background: linear-gradient(
+    to right,
+    #92400e,
+    /* amber-800 */ #fbbf24,
+    /* amber-400 (gold) */ #92400e,
+    #92400e,
+    #fbbf24,
+    #92400e
+  );
+
+  background-size: 250%;
+  background-position: left;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: background-position 1s, transform 0.15s;
+  overflow: hidden;
+
+  /* hide real text */
+  color: transparent;
+}
+
+/* glossy inner plate WITH TEXT */
+.btn-cta::before {
+  content: attr(data-label);
+  position: absolute;
+
+  width: 97%;
+  height: 90%;
+  border-radius: 8px;
+
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #ffffff;
+
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: background-position 1s;
+}
+
+/* hover shine */
+.btn-cta:hover {
+  background-position: right;
+}
+
+/* press */
+.btn-cta:active {
+  transform: scale(0.95);
+}
+
+
+/* ===================== 1200px ===================== */
+@media (max-width: 1200px) {
+  .magic-card {
+    width: 230px;
+    height: 260px;
+  }
+
+  .card {
+    width: 250px;
+    height: 310px;
+  }
+
+  .bg {
+    width: 238px;
+    height: 298px;
+  }
+
+  .cards {
+    gap: 60px;
+  }
+}
+
+
+/* ===================== 992px ===================== */
+@media (max-width: 992px) {
+  .magic-card {
+    width: 210px;
+    height: 240px;
+  }
+
+  .card {
+    width: 230px;
+    height: 290px;
+  }
+
+  .bg {
+    width: 218px;
+    height: 278px;
+  }
+
+  .cards {
+    gap: 40px;
+  }
+
+  .btn-cta {
+    width: 170px;
+  }
+}
+
+
+/* ===================== 768px ===================== */
+@media (max-width: 768px) {
+  section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .magic-card {
+    width: 100%;
+    max-width: 240px;
+    height: 240px;
+    margin-bottom: 20px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 240px;
+    height: 280px;
+  }
+
+  .bg {
+    width: calc(100% - 12px);
+    height: calc(100% - 12px);
+  }
+
+  .cards {
+    gap: 40px;
+  }
+
+  .btn-cta {
+    width: 160px;
+    height: 42px;
+  }
+
+  .btn-cta::before {
+    font-size: 0.85rem;
+  }
+
+  .grid.md\:grid-cols-4,
+  .grid.md\:grid-cols-3 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* ===================== 480px ===================== */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  .magic-card {
+    max-width: 220px;
+    height: 220px;
+  }
+
+  .card {
+    max-width: 220px;
+    height: 260px;
+  }
+
+  .cards {
+    gap: 20px;
+  }
+
+  .btn-cta {
+    width: 150px;
+    height: 40px;
+  }
+
+  .btn-cta::before {
+    font-size: 0.8rem;
+  }
+
+  .cards .card {
+    width: 220px;
+    height: 220px;
+  }
+
+  .cards .card p.tip {
+    font-size: 1.1em;
+  }
+
+  .cards .card p.second-text {
+    font-size: 0.65em;
+  }
+}

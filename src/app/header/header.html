@@ -1,0 +1,247 @@
+<nav class="navbar bg-black text-lime-400 shadow"
+     appDropdownDirective
+     #dropdown="appDropdownDirective">
+
+    <div class="header-container flex items-center justify-between h-20 px-4">
+
+        <!-- LEFT SECTION -->
+        <div class="navbar-left flex items-center gap-4 shrink-0">
+
+            <!-- Mobile Toggle Button -->
+            <button class="mobile-toggle flex flex-col space-y-1"
+                    (click)="$event.stopPropagation(); dropdown.toggle()">
+                <span class="w-6 h-0.5 bg-white"></span>
+                <span class="w-6 h-0.5 bg-white"></span>
+                <span class="w-6 h-0.5 bg-white"></span>
+            </button>
+
+            <a routerLink="/"
+               routerLinkActive="active-link"
+               class="nav-link logo-name relative flex items-center h-18 px-4 text-2xl font-bold italic  text-white ">
+                LUXRO
+            </a>
+
+            <img src="../../assets/logo-icon.png"
+                 alt="Logo"
+                 class="navbar-brand-img w-12 h-12 object-contain mr-4 -ml-6" />
+
+            <ul class="main-nav items-center gap-3">
+
+                <li>
+                    <a routerLink="/discover"
+                       routerLinkActive="active-link"
+                       [routerLinkActiveOptions]="{ exact: true }"
+                       class="nav-link relative flex items-center h-16 px-4 text-white">
+                        Discover
+                    </a>
+                </li>
+                @if (authReady() && isAuthenticated()) {
+                <li>
+                    <a routerLink="/fleet"
+                       routerLinkActive="active-link"
+                       class="nav-link relative flex items-center h-16 px-4 text-white">
+                        Our Fleet
+                        <span class="underline-anim"></span>
+                    </a>
+                </li>
+                }
+                @if (authReady() && isAuthenticated()) {
+                <li class="relative">
+                    <div class="tooltip-container">
+                        <span class="tooltip"> Hello, <span class="tooltip-name">{{ userName() }}</span> </span>
+                        <div class="avatar text"> {{ userName()[0] }} </div>
+                    </div>
+                </li>
+                }
+            </ul>
+        </div>
+
+        <!-- RIGHT SECTION -->
+        <div class="navbar-right flex items-center gap-2.5 ml-auto">
+
+            <ul class="main-nav hidden md:flex items-center gap-3">
+
+                @if (authReady() && isAuthenticated()) {
+                <li>
+                    <a routerLink="/book-now"
+                       routerLinkActive="active-link"
+                       class="nav-link relative flex items-center h-16 px-4 text-white">
+                        Book Now
+                        <span class="underline-anim"></span>
+                    </a>
+                </li>
+
+                <li>
+                    <a routerLink="/wishlist"
+                       routerLinkActive="active-link"
+                       class="nav-link relative flex items-center h-16 px-4 text-white">
+                        Wishlist
+                        <span class="underline-anim"></span>
+                    </a>
+                </li>
+                }
+
+                @if (authReady()) {
+                <li>
+                    <a routerLink="/partner"
+                       routerLinkActive="active-link"
+                       class="nav-link relative flex items-center h-16 px-4 text-white">
+                        Become a Host
+                        <span class="underline-anim"></span>
+                    </a>
+                </li>
+
+                <li>
+                    <a routerLink="/contact"
+                       routerLinkActive="active-link"
+                       class="nav-link relative flex items-center h-16 px-4 text-white">
+                        Contact Us
+                        <span class="underline-anim"></span>
+                    </a>
+                </li>
+
+                <li>
+                    <a routerLink="/about"
+                       routerLinkActive="active-link"
+                       class="nav-link relative flex items-center h-16 px-4 text-white">
+                        About LUXRO
+                        <span class="underline-anim"></span>
+                    </a>
+                </li>
+
+                <li>
+                    <a routerLink="/careers"
+                       routerLinkActive="active-link"
+                       class="nav-link relative flex items-center h-16 px-4 text-white">
+                        Careers
+                        <span class="underline-anim"></span>
+                    </a>
+                </li>
+
+                <li>
+                    <a routerLink="/insights"
+                       routerLinkActive="active-link"
+                       class="nav-link relative flex items-center h-16 px-4 text-white">
+                        Insights
+                        <span class="underline-anim"></span>
+                    </a>
+                </li>
+                }
+
+                @if (authReady() && isAuthenticated()) {
+                <li>
+                    <button class="animated-button"
+                            (click)="onLogout()">
+                        <svg viewBox="0 0 24 24"
+                             class="arr-2"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                  d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                            </path>
+                        </svg>
+
+                        <span class="text">LogOut</span>
+                        <span class="circle"></span>
+
+                        <svg viewBox="0 0 24 24"
+                             class="arr-1"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                  d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                            </path>
+                        </svg>
+                    </button>
+                </li>
+
+                }@else {
+                <li>
+                    <button class="animated-button"
+                            (click)="goToLogin()">
+                        <svg viewBox="0 0 24 24"
+                             class="arr-2"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                  d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                            </path>
+                        </svg>
+
+                        <span class="text">Login</span>
+                        <span class="circle"></span>
+
+                        <svg viewBox="0 0 24 24"
+                             class="arr-1"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                  d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                            </path>
+                        </svg>
+                    </button>
+
+                </li>
+                }
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+@if (isLoggingOut()) {
+<app-load-spinner></app-load-spinner>
+}
+
+<!-- MOBILE OVERLAY -->
+@if (dropdown.isOpen) {
+<div class="mobile-overlay"
+     (click)="dropdown.toggle()"></div>
+}
+
+<!-- MOBILE SIDEBAR -->
+<aside class="mobile-sidebar"
+       [class.active]="dropdown.isOpen">
+    <div class="mobile-sidebar-header">
+        <h2 class="mobile-title">Menu</h2>
+        <button class="mobile-close"
+                (click)="$event.stopPropagation(); dropdown.toggle()">
+            ✕
+        </button>
+    </div>
+
+    <ul class="mobile-nav">
+        <li><a routerLink="/discover">Discover</a></li>
+
+        @if (authReady() && isAuthenticated()) {
+        <li><a routerLink="/fleet">Our Fleet</a></li>
+        <li><a routerLink="/book-now">Book Now</a></li>
+        <li><a routerLink="/wishlist">Wishlist</a></li>
+        }
+
+        <li><a routerLink="/partner">Become a Host</a></li>
+        <li><a routerLink="/contact">Contact Us</a></li>
+        <li><a routerLink="/about">About LUXRO</a></li>
+        <li><a routerLink="/careers">Careers</a></li>
+        <li><a routerLink="/insights">Insights</a></li>
+
+        @if (authReady() && isAuthenticated()) {
+        <li class="divider"></li>
+        <li>
+            <button (click)="onLogout()"
+                    class="lux-login-btn">
+                <span class="lux-login-btn_lg">
+                    <span class="lux-login-btn_sl"></span>
+                    <span class="lux-login-btn_text">Logout</span>
+                </span>
+            </button>
+        </li>
+        } @else {
+        <li>
+            <button class="lux-login-btn"
+                    (click)="goToLogin()">
+                <span class="lux-login-btn_lg">
+                    <span class="lux-login-btn_sl"></span>
+                    <span class="lux-login-btn_text">Login</span>
+                </span>
+            </button>
+        </li>
+        }
+    </ul>
+</aside>

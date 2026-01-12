@@ -1,0 +1,177 @@
+<section class="relative min-h-[50vh] flex items-center bg-cover bg-center"
+         style="background-image: url('../../../assets/hostform-hero.jpg'); background-position: center 70%">
+
+  <div class="absolute inset-0 bg-black/70"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 w-full">
+    <div class="max-w-2xl text-white">
+      <h1 class="text-4xl md:text-6xl font-bold mb-6">
+        Become a Luxro Host
+      </h1>
+
+      <p class="text-xl opacity-90">
+        Share your details below to list your car on Luxro and start earning.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="bg-black py-16">
+
+  <div class="max-w-5xl mx-auto px-6">
+
+    <div class="bg-red-100 border border-black rounded-xl p-5 mb-12 text-black text-center">
+      <p class="text-lg font-semibold">
+        📞 <strong>Note:</strong> Our support team will contact you shortly to
+        verify your details and guide you through the next steps, including
+        document verification and pricing.
+      </p>
+    </div>
+
+    <div class="flex justify-center">
+      <form class="form space-y-10"
+            #hostForm="ngForm"
+            (ngSubmit)="submitForm()">
+
+        <section>
+          <h2 class="text-xl font-semibold mb-4 text-white">
+            Personal Information
+          </h2>
+
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="inputForm">
+              <input type="text"
+                     placeholder="Full Name"
+                     [(ngModel)]="application.fullName"
+                     name="fullName"
+                     class="input"
+                     required />
+            </div>
+
+            <div class="inputForm">
+              <input type="email"
+                     placeholder="Email Address"
+                     [(ngModel)]="application.email"
+                     name="email"
+                     class="input"
+                     required />
+            </div>
+
+            <div class="inputForm md:col-span-2">
+              <input type="tel"
+                     placeholder="Phone Number"
+                     [(ngModel)]="application.phone"
+                     name="phone"
+                     class="input"
+                     required />
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold mb-4 text-white">
+            Address Details
+          </h2>
+
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="inputForm md:col-span-2">
+              <textarea rows="2"
+                        placeholder="Full Address"
+                        [(ngModel)]="application.address"
+                        name="address"
+                        class="input resize-none"
+                        required></textarea>
+            </div>
+
+            <div class="inputForm">
+              <input type="text"
+                     placeholder="City"
+                     [(ngModel)]="application.city"
+                     required
+                     name="city"
+                     class="input" />
+            </div>
+
+            <div class="inputForm">
+              <input type="text"
+                     placeholder="State"
+                     [(ngModel)]="application.state"
+                     required
+                     name="state"
+                     class="input" />
+            </div>
+
+            <div class="inputForm md:col-span-2">
+              <input type="text"
+                     placeholder="Pincode"
+                     [(ngModel)]="application.pincode"
+                     required
+                     name="pincode"
+                     class="input" />
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold mb-4 text-white">
+            Identity Proof
+          </h2>
+
+          <div class="inputForm">
+            <input type="file"
+                   accept=".pdf,.jpg,.jpeg,.png"
+                   (change)="onGovtIdUpload($event)"
+                   class="input"
+                   required />
+          </div>
+
+          <p class="text-sm text-white/80 mt-2">
+            Upload Aadhaar, PAN, or Driving License.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold mb-4 text-white">
+            Car Details
+          </h2>
+
+          <div class="grid md:grid-cols-3 gap-4">
+            <div class="inputForm">
+              <input type="text"
+                     placeholder="Car Name"
+                     [(ngModel)]="application.carName"
+                     name="carName"
+                     class="input"
+                     required />
+            </div>
+
+            <div class="inputForm">
+              <input type="text"
+                     placeholder="Car Model"
+                     [(ngModel)]="application.carModel"
+                     name="carModel"
+                     class="input"
+                     required />
+            </div>
+
+            <div class="inputForm">
+              <input type="text"
+                     placeholder="Mileage (km/l)"
+                     [(ngModel)]="application.mileage"
+                     name="mileage"
+                     class="input" />
+            </div>
+          </div>
+        </section>
+
+        <button type="submit"
+                class="button-submit"
+                [disabled]="hostForm.invalid">
+          Submit Application
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+</section>

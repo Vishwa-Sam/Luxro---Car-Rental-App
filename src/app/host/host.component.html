@@ -1,0 +1,453 @@
+<section class="bg-linear-to-b from-lime-400 via-lime-100 to-white"
+         @contentFadeInOut>
+    <div class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
+
+        <div>
+            <span class="inline-block bg-black text-white px-4 py-1 rounded-full mb-4">
+                Luxro Partner Program
+            </span>
+
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                Let Your Car Earn for You
+            </h1>
+
+            <p class="text-gray-800 mb-8 max-w-xl">
+                Join thousands of car owners across India earning reliable passive
+                income by hosting their cars on Luxro.
+            </p>
+
+            <button class="bg-black text-white px-8 py-3 rounded-lg mb-10 cursor-pointer"
+                    (click)="register()">
+                Register Your Car
+            </button>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-xl">
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl">👤</span>
+                    <div>
+                        <p class="font-semibold">35K+</p>
+                        <p class="text-sm text-gray-700">Live Hosts</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl">₹</span>
+                    <div>
+                        <p class="font-semibold">₹100Cr+</p>
+                        <p class="text-sm text-gray-700">Earned</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl">📍</span>
+                    <div>
+                        <p class="font-semibold">90+</p>
+                        <p class="text-sm text-gray-700">Cities</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl">✔️</span>
+                    <div>
+                        <p class="font-semibold">70L+</p>
+                        <p class="text-sm text-gray-700">Trips</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative">
+            <img src="../../assets/host-hero.png"
+                 alt="Host Car"
+                 class="w-full max-w-none lg:w-[120%] xl:w-[140%]" />
+        </div>
+
+    </div>
+</section>
+
+<main class="bg-black text-lime-300">
+
+    <!-- ================= BENEFITS ================= -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">
+                    Why Become a Luxro Host?
+                </h2>
+                <p class="text-white font-semibold text-2xl max-w-2xl mx-auto">
+                    Earn more from your car with complete control, safety, and zero hassle.
+                </p>
+            </div>
+
+            <!-- Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20">
+
+                @for (benefit of hostbenefits; track benefit.title) {
+                <div class="luxro-card group">
+                    <div class="luxro-card-content">
+
+                        <div class="text-4xl mb-5">
+                            {{ benefit.icon }}
+                        </div>
+                        <h3 class="text-rose-600 text-lg font-bold mb-3">
+                            {{ benefit.title }}
+                        </h3>
+                        <p class="text-black text-sm mb-4 leading-relaxed font-semibold">
+                            {{ benefit.description }}
+                        </p>
+
+                        @if (benefit.points?.length) {
+                        <ul class="space-y-2 text-sm text-blue-600 font-semibold">
+                            @for (point of benefit.points; track point) {
+                            <li class="flex items-start gap-2">
+                                <span class="text-red-700 mt-1">✔</span>
+                                <span>{{ point }}</span>
+                            </li>
+                            }
+                        </ul>
+                        }
+
+                    </div>
+                </div>
+                }
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= EARNINGS CALCULATOR ================= -->
+    <section class="py-20 border-t-4 border-lime-300">
+        <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+
+            <div>
+                <h2 class="text-3xl font-semibold mb-6">
+                    Estimate Your Monthly Earnings
+                </h2>
+
+                <select class="w-full border p-3 rounded-lg mb-4"
+                        [(ngModel)]="selectedCar"
+                        (change)="calculate()">
+                    <option class="text-black">BMW</option>
+                    <option class="text-black">Mercedes-Benz</option>
+                    <option class="text-black">Tesla</option>
+                    <option class="text-black">Kia</option>
+                    <option class="text-black">Audi</option>
+                    <option class="text-black">Maruti Suzuki</option>
+                    <option class="text-black">Toyota</option>
+                    <option class="text-black">Mahindra</option>
+                    <option class="text-black">Nissan</option>
+                    <option class="text-black">Honda</option>
+                    <option class="text-black">Tata</option>
+                    <option class="text-black">Škoda</option>
+                    <option class="text-black">Hyundai</option>
+                    <option class="text-black">Range Rover</option>
+                </select>
+
+                <select class="w-full border p-3 rounded-lg mb-6"
+                        [(ngModel)]="selectedCity"
+                        (change)="calculate()">
+                    <option class="text-black">Bangalore</option>
+                    <option class="text-black">Delhi</option>
+                    <option class="text-black">Chennai</option>
+                    <option class="text-black">Coimbatore</option>
+                    <option class="text-black">Ooty</option>
+                    <option class="text-black">Mumbai</option>
+                    <option class="text-black">Hyderabad</option>
+                    <option class="text-black">Pune</option>
+                    <option class="text-black">Ahmedabad</option>
+                    <option class="text-black">Kochi</option>
+                    <option class="text-black">Thiruvananthapuram</option>
+                    <option class="text-black">Goa</option>
+                </select>
+
+                <button class="btn"
+                        (click)="calculate()">Calculate</button>
+            </div>
+
+            <div class="card">
+                <div class="content flex items-center justify-center">
+
+                    <div class=" rounded-xl p-10 text-center text-white">
+                        <p class="mb-2">Estimated Monthly Earning</p>
+                        <h3 class="text-4xl font-bold">
+                            ₹ {{ estimatedEarning || 0 }}
+                        </h3>
+                        <p class="text-sm mt-2 text-gray-300">
+                            *Approximate based on selection
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="points_wrapper">
+                    <i class="point"></i>
+                    <i class="point"></i>
+                    <i class="point"></i>
+                    <i class="point"></i>
+                    <i class="point"></i>
+                    <i class="point"></i>
+                    <i class="point"></i>
+                    <i class="point"></i>
+                    <i class="point"></i>
+                    <i class="point"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= HOW IT WORKS ================= -->
+    <section class="py-20 border-t-4 border-lime-300">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-semibold mb-14">
+                Become a Host in 3 Simple Steps
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-10">
+                <div>
+                    <div class="text-4xl mb-4">📲</div>
+                    <h3 class="font-bold text-2xl mb-2">Register</h3>
+                    <p class="text-white">
+                        Sign up and verify your account with basic details.
+                    </p>
+                </div>
+
+                <div>
+                    <div class="text-4xl mb-4">🚗</div>
+                    <h3 class="font-bold text-2xl mb-2">List Your Car</h3>
+                    <p class="text-white">
+                        Upload car details, documents, and availability.
+                    </p>
+                </div>
+
+                <div>
+                    <div class="text-4xl mb-4">💵</div>
+                    <h3 class="font-bold text-2xl mb-2">Start Earning</h3>
+                    <p class="text-white">
+                        Accept bookings and earn from every completed trip.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= TESTIMONIALS ================= -->
+    <section class="testimonials-section border-t-4 border-lime-300">
+        <h2 class="testimonials-title">What Our Hosts Say</h2>
+        <p class="testimonials-subtitle">
+            Real experiences from people who drive and host with Luxro
+        </p>
+
+        <div class="testimonials-grid">
+
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+
+                    <p class="review-text">
+                        “Luxro helped me earn consistently every month and comfortably cover my car EMI
+                        without stress. The platform is reliable, transparent, and easy to use.”
+                    </p>
+
+                    <div class="testimonial-footer">
+
+                        <div class="user-info">
+                            <img src="../../assets/Landing/host-1.png"
+                                 alt="User Avatar"
+                                 class="user-avatar" />
+
+                            <div class="user-meta">
+                                <p class="user-name">Rakesh</p>
+                                <p class="user-location">Bangalore</p>
+                            </div>
+                        </div>
+
+                        <div class="stars">
+                            ★★★★★
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+
+                    <p class="review-text">
+                        “The process is extremely simple, the support team is responsive, and payouts
+                        always arrive on time. Hosting with Luxro has been a smooth and rewarding experience.”
+                    </p>
+
+                    <div class="testimonial-footer">
+
+                        <div class="user-info">
+                            <img src="../../assets/Landing/host-2.png"
+                                 alt="User Avatar"
+                                 class="user-avatar" />
+
+                            <div class="user-meta">
+                                <p class="user-name">Steffy</p>
+                                <p class="user-location">Chennai</p>
+                            </div>
+                        </div>
+
+                        <div class="stars">
+                            ★★★★★
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-20 border-t-4 border-lime-300">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-10">
+                Host FAQs
+            </h2>
+
+            @for (faq of faqs; track faq.question; let i = $index) {
+            <div class="outline-4 outline-lime-500 rounded-xl bg-white mb-8 cursor-pointer">
+                <button class="w-full p-5 flex justify-between items-center cursor-pointer"
+                        (click)="toggleFaq(i)">
+                    <span class="font-bold text-black text-1xl">{{ faq.question }}</span>
+                    <span class="text-black">{{ openFaqIndex === i ? '▲' : '▼' }}</span>
+                </button>
+
+                @if (openFaqIndex === i) {
+                <div class="px-5 pb-5 text-red-500 font-semibold">
+                    {{ faq.answer }}
+                </div>
+                }
+            </div>
+            }
+        </div>
+    </section>
+</main>
+
+<footer class="bg-lime-300  border-t py-16">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-5 gap-10 text-sm">
+
+        <div>
+            <div class="flex items-center gap-3 mb-4">
+                <img src="../../assets/logo-icon.png"
+                     alt="Luxro logo"
+                     class="w-10 h-10 rounded-md object-contain cursor-pointer hover:scale-105 transition" />
+                <h3 class="text-black text-3xl font-bold tracking-wide cursor-pointer hover:scale-105 transition">
+                    Luxro
+                </h3>
+            </div>
+
+            <p class="text-sm leading-relaxed mb-6 max-w-xs font-semibold">Email: hello@luxro.app</p>
+            <p class="text-sm leading-relaxed mb-6 max-w-xs font-semibold">Phone: +91 90000 00000</p>
+        </div>
+
+        <div>
+            <h4 class="text-red-600 font-bold mb-4 text-2xl underline underline-offset-8 decoration-2">Company</h4>
+            <ul class="space-y-3 text-sm">
+                <li><a routerLink="/about"
+                       class="hover:text-pink-500 font-semibold cursor-pointer">About Us</a></li>
+                <li><a routerLink="/careers"
+                       class="hover:text-pink-500 font-semibold cursor-pointer">Careers</a></li>
+                <li><a routerLink="/discover"
+                       class="hover:text-pink-500 font-semibold cursor-pointer">Home</a></li>
+                <li><a routerLink="/partner"
+                       class="hover:text-pink-500 font-semibold cursor-pointer">Become a Host</a></li>
+            </ul>
+        </div>
+
+
+        <div>
+            <h4 class="text-red-600 font-bold mb-4 text-2xl underline underline-offset-8 decoration-2">Features</h4>
+            <ul class="space-y-3 text-sm">
+                <li><a routerLink="/insights"
+                       class="hover:text-pink-500 font-semibold cursor-pointer">Blogs</a></li>
+                <li><a routerLink="/contact"
+                       class="hover:text-pink-500 font-semibold cursor-pointer">FAQs</a></li>
+                <li><a routerLink="/about"
+                       class="hover:text-pink-500 font-semibold cursor-pointer">Terms of Service</a></li>
+                <li><a routerLink="/about"
+                       class="hover:text-pink-500 font-semibold cursor-pointer">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3 class="text-red-600 font-bold mb-4 text-2xl underline underline-offset-8 decoration-2">Install App</h3>
+            <ul class="space-y-3 text-sm">
+                <li><a class="hover:text-pink-500 font-semibold cursor-pointer">Google Play</a></li>
+                <li><a class="hover:text-pink-500 font-semibold cursor-pointer">App Store</a></li>
+            </ul>
+
+        </div>
+
+        <div>
+            <h3 class="text-red-600 font-bold mb-4 text-2xl underline underline-offset-8 decoration-2">Follow Us</h3>
+            <div id="SocailIcons"
+                 class="footer-socials">
+
+                <div class="icons instaIcon">
+                    <p class="iconName">Instagram</p>
+                    <div class="icon insta">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24"
+                             width="35"
+                             fill="currentColor">
+                            <path
+                                  d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm4.75-2.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </svg>
+
+                    </div>
+                </div>
+
+                <div class="icons linkedin">
+                    <p class="iconName">Twitter</p>
+                    <div class="icon link">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24"
+                             width="35"
+                             fill="currentColor">
+                            <path
+                                  d="M22.46 6c-.77.35-1.6.58-2.46.69a4.3 4.3 0 0 0 1.88-2.38 8.6 8.6 0 0 1-2.72 1.04 4.28 4.28 0 0 0-7.3 3.9A12.15 12.15 0 0 1 3.15 4.8a4.28 4.28 0 0 0 1.32 5.7 4.24 4.24 0 0 1-1.94-.54v.05a4.28 4.28 0 0 0 3.44 4.19 4.3 4.3 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98A8.6 8.6 0 0 1 2 19.54 12.14 12.14 0 0 0 8.29 21c7.55 0 11.68-6.26 11.68-11.68 0-.18 0-.36-.01-.54A8.36 8.36 0 0 0 22.46 6z" />
+                        </svg>
+
+                    </div>
+                </div>
+
+                <div class="icons whatsapp">
+                    <p class="iconName">LinkedIn</p>
+                    <div class="icon whats">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24"
+                             width="35"
+                             fill="currentColor">
+                            <path
+                                  d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 8.98h3.96V21H3V8.98zm7.53 0h3.8v1.64h.05c.53-1 1.82-2.05 3.74-2.05 4 0 4.74 2.63 4.74 6.05V21h-3.96v-5.44c0-1.3-.03-2.97-1.81-2.97-1.81 0-2.09 1.41-2.09 2.87V21h-3.96V8.98z" />
+                        </svg>
+
+                    </div>
+                </div>
+
+                <div class="icons youtube">
+                    <p class="iconName">Facebpok</p>
+                    <div class="icon tube">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24"
+                             width="35"
+                             fill="currentColor">
+                            <path
+                                  d="M22 12a10 10 0 1 0-11.5 9.95v-7.04H8v-2.91h2.5V9.8c0-2.47 1.47-3.84 3.72-3.84 1.08 0 2.2.2 2.2.2v2.42h-1.24c-1.22 0-1.6.76-1.6 1.54v1.85H16.5l-.5 2.91h-2.42v7.04A10 10 0 0 0 22 12z" />
+                        </svg>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="border-t border-black text-center text-md py-4 text-red-600 font-semibold mt-4">
+        © 2025 Luxro Mobility Pvt Ltd. All rights reserved.
+    </div>
+
+</footer>

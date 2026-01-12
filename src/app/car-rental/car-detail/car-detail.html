@@ -1,0 +1,182 @@
+@if (cars()) {
+<div class="min-h-screen p-8">
+
+  <div class="card max-w-6xl mx-auto p-8 rounded-3xl relative">
+
+    @if (alertType) {
+    <div class="mb-4">
+      <app-alert-message [type]="alertType"
+                         [message]="alertMessage"
+                         (close)="alertType = null; alertMessage = ''"></app-alert-message>
+    </div>
+    }
+
+    <button (click)="closeDetails()"
+            class="absolute -top-3  left-1 close-btn">
+      ✕
+    </button>
+
+    <!-- Main Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+      <div>
+        <img [src]="mainImage()"
+             alt="{{ cars()?.name }}"
+             class="w-full h-80 object-cover rounded-2xl shadow-xl" />
+
+        @if (cars()?.images?.length) {
+        <div class="grid grid-cols-3 gap-4 mt-4">
+          @for (img of cars()?.images; track $index) {
+          <img [src]="img"
+               (click)="setMainImage(img)"
+               [class.active-thumb]="img === mainImage()"
+               class="thumb-img">
+          }
+        </div>
+        }
+      </div>
+
+      <div>
+        <h1 class="text-4xl font-bold">
+          {{ cars()?.name }} – {{ cars()?.model }}
+        </h1>
+
+        <p class="muted">📍 {{ cars()?.location }}</p>
+        <p class="rating">⭐ {{ cars()?.ratings }} / 5</p>
+
+        @if (cars()?.description) {
+        <p class="description">
+          {{ cars()?.description }}
+        </p>
+        }
+
+        <!-- Specs -->
+        <div class="mt-6 grid grid-cols-2 gap-4">
+          <div class="spec-box">
+            <p class="label">Transmission</p>
+            <p class="value">{{ cars()?.transmission }}</p>
+          </div>
+
+          <div class="spec-box">
+            <p class="label">Fuel Type</p>
+            <p class="value">{{ cars()?.fuelType }}</p>
+          </div>
+
+          <div class="spec-box">
+            <p class="label">Seater</p>
+            <p class="value">{{ cars()?.seater }}</p>
+          </div>
+
+          <div class="spec-box">
+            <p class="label">Type</p>
+            <p class="value">{{ cars()?.carType }}</p>
+          </div>
+
+          @if (cars()?.mileage) {
+          <div class="spec-box">
+            <p class="label">Mileage</p>
+            <p class="value">{{ cars()?.mileage }}</p>
+          </div>
+          }
+
+          <div class="spec-box">
+            <p class="label">Luxury</p>
+            <p class="value">{{ cars()?.luxury ? "Yes" : "No" }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    @if (cars()?.features?.length) {
+    <div class="mt-10">
+      <h2 class="text-2xl font-semibold mb-4">Features</h2>
+      <div class="flex flex-wrap gap-3">
+        @for (feature of cars()?.features; track $index) {
+        <span class="feature-pill">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    }
+
+    <!-- Pricing -->
+    <div class="pricing-box mt-12">
+      <div class="flex flex-col md:flex-row justify-between gap-6">
+
+        <div>
+          <p class="price-label">Rental Price</p>
+          <h3 class="price">
+            ₹{{ cars()?.price }} <span>/ hr</span>
+          </h3>
+
+          <p class="availability"
+             [ngClass]="cars()?.availabilty === 'Available' ? 'available' : 'unavailable'">
+            {{ cars()?.availabilty | titlecase }}
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-4">
+
+          <!-- BOOK NOW -->
+          <button class="c-button c-button--gooey btn-book"
+                  (click)="onAddtoCheckout(cars()!)"
+                  [disabled]="hasCarInCheckout()">
+
+            {{ hasCarInCheckout() ? 'Cart already has a car' : 'Book Now' }}
+
+            <div class="c-button__blobs">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </button>
+
+          <!-- WISHLIST -->
+          <button class="c-button c-button--gooey btn-wishlist"
+                  (click)="onAddToWishlist()"
+                  [disabled]="inListAlready()">
+
+            {{ inListAlready() ? 'Already in Wishlist' : 'Add to Wishlist' }}
+
+            <div class="c-button__blobs">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </button>
+
+        </div>
+
+        <svg xmlns="http://www.w3.org/2000/svg"
+             version="1.1"
+             style="position:absolute;width:0;height:0">
+          <defs>
+            <filter id="goo">
+              <feGaussianBlur in="SourceGraphic"
+                              stdDeviation="10"
+                              result="blur" />
+              <feColorMatrix in="blur"
+                             mode="matrix"
+                             values="1 0 0 0 0  
+                0 1 0 0 0  
+                0 0 1 0 0  
+                0 0 0 18 -7"
+                             result="goo" />
+              <feBlend in="SourceGraphic"
+                       in2="goo" />
+            </filter>
+          </defs>
+        </svg>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+}
+
+@if (!cars()) {
+<div class="min-h-screen flex items-center justify-center text-white">
+  <h2 class="text-3xl font-bold">Select a car to see details</h2>
+</div>
+}

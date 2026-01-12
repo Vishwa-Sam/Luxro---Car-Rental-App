@@ -1,0 +1,109 @@
+<div class="card-2">
+  <div class="h1-circle"></div>
+  <div class="p-6 rounded-xl space-y-6 relative z-10 text-slate-100">
+
+    <h2 class="text-4xl font-extrabold bg-linear-to-r from-orange-300 via-yellow-300 to-red-400
+             bg-clip-text text-transparent">
+      {{ car()?.name }} • {{ car()?.model }}
+    </h2>
+
+    <div class="w-full h-96 rounded-xl overflow-hidden border border-white/30 shadow-lg">
+      <img [src]="mainImage()"
+           [alt]="car()?.name"
+           class="w-full h-full object-cover" />
+    </div>
+
+    @if (car()!.images!.length > 1) {
+    <div class="grid grid-cols-3 gap-4 mt-4">
+      @for (img of car()?.images; track $index) {
+      <img [src]="img"
+           (click)="setMainImage(img)"
+           [class.border-amber-400]="img === mainImage()"
+           class="h-28 w-full object-cover rounded-xl cursor-pointer
+                      border-2 border-transparent hover:scale-[1.03] hover:opacity-90 transition" />
+      }
+    </div>
+    }
+
+    <div class="flex justify-between items-start">
+      <div class="flex flex-wrap gap-3 text-sm">
+        <span class="spec-pill">{{ car()?.transmission }}</span>
+        <span class="spec-pill">{{ car()?.fuelType }}</span>
+        <span class="spec-pill">{{ car()?.seater }} Seater</span>
+        <span class="spec-pill">{{ car()?.carType }}</span>
+      </div>
+
+      <div class="flex items-center text-amber-400 text-lg font-bold">
+        ⭐ {{ car()?.ratings }}
+      </div>
+    </div>
+
+    <div class="text-cyan-400 text-lg font-bold">
+      📍 {{ car()?.location }}
+    </div>
+
+    <div class="space-y-1">
+      <p class="text-slate-100 font-semibold">Host: {{ car()?.hostName }}</p>
+      <p class="text-slate-200 text-md">Location: {{ car()?.hostLocation }}</p>
+    </div>
+
+    <div class="flex justify-between gap-6">
+      <div>
+        <h3 class="section-title">Features</h3>
+        <ul class="list-disc pl-5 text-slate-200 space-y-2">
+          @for (list of car()?.features; track $index) {
+          <li>{{ list }}</li>
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="section-title">Delivery Type</h3>
+        <p class="text-slate-200">{{ car()?.deliveryType }}</p>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="section-title">Description</h3>
+      <p class="text-slate-200 leading-relaxed">
+        {{ car()?.description }}
+      </p>
+    </div>
+
+    <!-- Info Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="info-card">
+        <h4>Mileage</h4>
+        <p>{{ car()?.mileage }}</p>
+      </div>
+      <div class="info-card">
+        <h4>Insurance</h4>
+        <p>{{ car()?.insuranceIncluded ? 'Included' : 'Not Included' }}</p>
+      </div>
+      <div class="info-card">
+        <h4>Extra Fees</h4>
+        <p>{{ car()?.extraFees }}</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-4">
+      <div>
+        <h3 class="section-title">What’s Included</h3>
+        <ul class="list-disc pl-5 text-slate-200 space-y-1">
+          <li>Insurance Coverage</li>
+          <li>Basic Roadside Assistance</li>
+          <li>Standard Cleaning</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="section-title">What’s Not Included</h3>
+        <ul class="list-disc pl-5 text-slate-200 space-y-1">
+          <li>Fuel Charges</li>
+          <li>Tolls & Parking Fees</li>
+          <li>Late Return Penalties</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>

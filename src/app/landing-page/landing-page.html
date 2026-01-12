@@ -1,0 +1,668 @@
+<!-- ================= HERO SECTION ================= -->
+<section class="relative min-h-[92vh] w-full bg-cover flex items-center"
+         style="
+    background-image: url('../../assets/landing-hero.jpg');
+    background-position: center 70%;
+  ">
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black/40"></div>
+
+    <!-- Content Wrapper -->
+    <div class="relative z-10 max-w-screen-2xl mx-auto px-6 w-full">
+
+        <!-- Content -->
+        <div class="max-w-4xl text-white">
+
+            <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                Premium Self-Drive Cars,<br />
+                Made Simple
+            </h1>
+
+            <p class="text-lg text-gray-200 mb-8 leading-relaxed">
+                Rent quality cars or earn passive income by hosting yours.
+                Luxro brings flexibility, trust, and comfort to every journey.
+            </p>
+
+            <!-- CTAs -->
+            <div class="flex gap-4 mb-10">
+                <div class="cta-wrapper">
+                    <button class="Btn btn-explore"
+                            (click)="onExploreFleet()">
+                    </button>
+
+                    <button class="Btn btn-host"
+                            (click)="onBecomeHost()">
+                    </button>
+                </div>
+            </div>
+
+            <!-- TRUST TAGS (ONE LINE FIXED) -->
+            <div class="flex flex-nowrap gap-4 text-sm text-gray-200 overflow-x-auto scrollbar-hide">
+                <span class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full whitespace-nowrap">
+                    ✔️ Verified Cars
+                </span>
+
+                <span class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full whitespace-nowrap">
+                    🔐 Secure Payments
+                </span>
+
+                <span class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full whitespace-nowrap">
+                    🛠 24/7 Support
+                </span>
+
+                <span class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full whitespace-nowrap">
+                    ⭐ 1M+ Users
+                </span>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ================= WHY CHOOSE LUXRO ================= -->
+<section class="py-24 bg-lime-300 text-black">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <!-- Heading -->
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold mb-4">
+                Why Choose Luxro
+            </h2>
+            <p class="text-gray-700 font-semibold text-2xl max-w-2xl mx-auto">
+                Built for trust, comfort, and flexibility — whether you rent or host.
+            </p>
+        </div>
+
+        <!-- Cards -->
+        <div class="luxro-grid grid gap-20">
+
+            @for (card of features; track card.title) {
+            <div class="luxro-card group">
+                <div class="luxro-card-content">
+
+                    <div class="text-4xl mb-5">
+                        {{ card.icon }}
+                    </div>
+
+                    <h3 class="text-lime-400 text-lg font-semibold mb-3">
+                        {{ card.title }}
+                    </h3>
+
+                    <p class="text-white text-sm mb-4 leading-relaxed">
+                        {{ card.description }}
+                    </p>
+
+                    <ul class="space-y-2 text-sm text-red-200">
+                        @for (point of card.points; track point) {
+                        <li class="flex items-start gap-2">
+                            <span class="text-lime-500 mt-1">✔</span>
+                            <span>{{ point }}</span>
+                        </li>
+                        }
+                    </ul>
+
+                </div>
+            </div>
+            }
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= FOR RENTERS & FOR HOSTS ================= -->
+<section class="py-24  bg-black text-lime-300">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <!-- Section Heading -->
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold mb-4">
+                One Platform. Multiple Opportunities.
+            </h2>
+            <p class="text-lime-600 font-semibold text-2xl max-w-2xl mx-auto">
+                Whether you want to drive, earn, or build your career — Luxro has a place for you.
+            </p>
+        </div>
+
+        <!-- Cards -->
+        <div class="luxro-split grid grid-cols-3 gap-2 justify-items-center">
+
+            <!-- ================= RENTERS CARD ================= -->
+            <div class="card">
+                <div class="header">
+                    <span class="title">For Renters</span>
+                    <span class="price">Drive</span>
+                </div>
+
+                <p class="desc">
+                    Rent self-drive cars for city travel, weekend getaways,
+                    or long road trips — without ownership hassles.
+                </p>
+
+                <ul class="lists">
+                    <li class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 20 20"
+                             fill="currentColor">
+                            <path fill-rule="evenodd"
+                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                  clip-rule="evenodd"></path>
+                        </svg>
+                        <span>Wide range of cars</span>
+                    </li>
+
+                    <li class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 20 20"
+                             fill="currentColor">
+                            <path fill-rule="evenodd"
+                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                  clip-rule="evenodd"></path>
+                        </svg>
+                        <span>Transparent pricing</span>
+                    </li>
+
+                    <li class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 20 20"
+                             fill="currentColor">
+                            <path fill-rule="evenodd"
+                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                  clip-rule="evenodd"></path>
+                        </svg>
+                        <span>Well-maintained vehicles</span>
+                    </li>
+                </ul>
+
+                <button class="action"
+                        (click)="onExploreFleet()">
+                    Explore Fleet
+                </button>
+            </div>
+
+            <!-- ================= HOSTS CARD ================= -->
+            <div class="card">
+                <div class="header">
+                    <span class="title">For Hosts</span>
+                    <span class="price">Earn</span>
+                </div>
+
+                <p class="desc">
+                    Turn your idle car into a source of passive income.
+                    Host on your terms with full control and support.
+                </p>
+
+                <ul class="lists">
+                    <li class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 20 20"
+                             fill="currentColor">
+                            <path fill-rule="evenodd"
+                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                  clip-rule="evenodd"></path>
+                        </svg>
+                        <span>Passive income</span>
+                    </li>
+
+                    <li class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 20 20"
+                             fill="currentColor">
+                            <path fill-rule="evenodd"
+                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                  clip-rule="evenodd"></path>
+                        </svg>
+                        <span>Flexible availability</span>
+                    </li>
+
+                    <li class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 20 20"
+                             fill="currentColor">
+                            <path fill-rule="evenodd"
+                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                  clip-rule="evenodd"></path>
+                        </svg>
+                        <span>Dedicated host support</span>
+                    </li>
+                </ul>
+
+                <button class="action outline"
+                        (click)="onBecomeHost()">
+                    Become a Host
+                </button>
+            </div>
+
+            <!-- ================= HOSTS CARD ================= -->
+            <div class="card">
+                <div class="header">
+                    <span class="title">Careers</span>
+                    <span class="price">Build</span>
+                </div>
+
+                <p class="desc">
+                    Join Luxro and help shape the future of mobility. Work on meaningful
+                    problems with modern technology and real impact.
+                </p>
+
+                <ul class="lists">
+                    <li class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 20 20"
+                             fill="currentColor">
+                            <path fill-rule="evenodd"
+                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                  clip-rule="evenodd"></path>
+                        </svg>
+                        <span>Modern tech stack</span>
+                    </li>
+
+                    <li class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 20 20"
+                             fill="currentColor">
+                            <path fill-rule="evenodd"
+                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                  clip-rule="evenodd"></path>
+                        </svg>
+                        <span>Growth-focused culture</span>
+                    </li>
+
+                    <li class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 20 20"
+                             fill="currentColor">
+                            <path fill-rule="evenodd"
+                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                  clip-rule="evenodd"></path>
+                        </svg>
+                        <span>Real-world impact</span>
+                    </li>
+                </ul>
+
+                <button class="action outline"
+                        (click)="onCareers()">
+                    View Careers
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- ================= CITIES SECTION ================= -->
+<section class="py-20 pl-12  bg-lime-300 text-black relative overflow-hidden">
+
+    <!-- TITLE -->
+    <div class="px-6 mb-10 text-center">
+        <h2 class="text-4xl font-bold mb-4">
+            Cities We’re In
+        </h2>
+        <p class="text-gray-600 font-semibold text-2xl max-w-5xl mx-auto">
+            Luxro is available across major cities in India — making self-drive rentals
+            and hosting accessible wherever you are.
+        </p>
+    </div>
+
+    <!-- LEFT ARROW -->
+    <button class="absolute top-96 left-12 z-10
+           bg-black text-white text-3xl shadow-md rounded-full w-12 h-12 cursor-pointer flex items-center justify-center hover:bg-gray-100 hover:text-black"
+            (click)="scrollLeft()">
+        ‹
+    </button>
+
+    <!-- CAROUSEL -->
+    <div class="relative overflow-hidden px-6">
+        <div #scrollContainer
+             class="flex gap-6 overflow-x-auto scroll-smooth
+             snap-x snap-mandatory scrollbar-hide">
+
+            <!-- CARD -->
+            @for (city of cityData; track $index) {
+            <div class="relative h-95 shrink-0 snap-start
+         rounded-2xl overflow-hidden
+         group
+         transition-transform duration-300
+         hover:-translate-y-1"
+                 style="min-width: 280px;">
+
+                <!-- Image -->
+                <img [src]="city.image"
+                     [alt]="city.name"
+                     class="absolute inset-0 w-full h-full object-cover
+           grayscale group-hover:grayscale-0
+           scale-100 group-hover:scale-105
+           transition duration-700 ease-out" />
+
+                <!-- Dark Gradient Overlay -->
+                <div class="absolute inset-0
+           bg-linear-to-t from-black/70
+           via-black/10 to-transparent
+           pointer-events-none">
+                </div>
+
+                <!-- Text Content -->
+                <div class="absolute bottom-5 left-5 right-5 text-white z-10 text-center">
+                    <h3 class="font-semibold text-xl">
+                        {{ city.name }}
+                    </h3>
+                    <p class="text-sm opacity-90">
+                        {{ city.subtitle }}
+                    </p>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+
+    <!-- RIGHT ARROW -->
+    <button class="absolute right-1 top-96 z-10
+           bg-black text-white text-3xl shadow-md rounded-full w-12 h-12 cursor-pointer flex items-center justify-center hover:bg-gray-100 hover:text-black"
+            (click)="scrollRight()">
+        ›
+    </button>
+
+</section>
+
+
+<!-- ================= CAR MODELS SECTION ================= -->
+<section class="py-24 bg-gray-50 overflow-hidden">
+
+    <!-- Header -->
+    <div class="px-6 mb-12 text-center">
+        <h2 class="text-4xl font-bold mb-4">
+            Cars for Every Journey
+        </h2>
+        <p class="text-gray-600 font-semibold text-2xl max-w-5xl mx-auto">
+            A wide selection of vehicles designed for city drives, road trips,
+            family travel, and premium experiences.
+        </p>
+    </div>
+
+
+    <!-- Marquee -->
+    <div class="relative">
+        <div class="flex gap-6 animate-marquee hover:[animation-play-state:paused]">
+
+            <!-- Image Card -->
+            @for (car of carData; track $index) {
+            <div class="car-image-card group">
+                <img [src]="car.image" />
+            </div>
+            }
+
+        </div>
+    </div>
+
+</section>
+
+
+<!-- ================= APP DOWNLOAD ================= -->
+<section class="py-24 bg-black text-lime-300 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+
+        <!-- LEFT CONTENT -->
+        <div>
+            <h2 class="text-4xl md:text-4xl font-bold mb-6">
+                Take Luxro With You
+            </h2>
+
+            <p class="text-lime-600 text-2xl font-semibold max-w-xl mb-8">
+                Book cars, manage trips, track earnings, and get real-time support —
+                all from the Luxro mobile app.
+            </p>
+
+            <ul class="space-y-3 mb-10 text-gray-300">
+                <li>✔ Seamless self-drive bookings</li>
+                <li>✔ Real-time trip updates</li>
+                <li>✔ Easy earnings tracking for hosts</li>
+                <li>✔ 24×7 in-app support</li>
+            </ul>
+
+            <!-- STORE BUTTONS -->
+            <div class="flex gap-4 footer-store-buttons">
+
+
+                <img src="../../assets/Landing/playstore.png"
+                     class="h-12 max-w-37.5 object-contain cursor-pointer hover:scale-105 transition" />
+
+                <img src="../../assets/Landing/app-store.png"
+                     class="h-12 max-w-37.5 object-contain cursor-pointer hover:scale-105 transition" />
+
+            </div>
+        </div>
+
+        <!-- RIGHT IMAGE -->
+        <div class="relative flex justify-center">
+            <img src="../../assets/Landing/movile-landing.png"
+                 alt="Luxro App"
+                 class="w-122.5 md:w-380px rounded-3xl drop-shadow-2xl" />
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- ================= FINAL CTA ================= -->
+<section class="py-20 bg-lime-300 text-black">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+
+        <h2 class="text-4xl font-bold mb-4">
+            Ready to Start Your Journey?
+        </h2>
+
+        <p class="text-gray-800 text-2xl font-semibold mb-8 max-w-5xl mx-auto">
+            Whether you’re renting a car or earning from one,
+            Luxro makes mobility simple, flexible, and rewarding.
+        </p>
+        <div class="flex justify-center gap-6">
+
+            <button class="btn-cta"
+                    data-label="Rent a Car"
+                    (click)="onExploreFleet()">
+                Rent a Car
+            </button>
+
+            <button class="btn-cta"
+                    data-label="Become a Host"
+                    (click)="onBecomeHost()">
+                Become a Host
+            </button>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="testimonials-section">
+    <h2 class="testimonials-title">What Our Customers Say</h2>
+    <p class="testimonials-subtitle">
+        Real experiences from people who drive and host with Luxro
+    </p>
+
+    <div class="testimonials-grid">
+
+        @for (card of testimonialData; track $index) {
+        <div class="testimonial-card">
+            <div class="testimonial-content">
+
+                <!-- Quote -->
+                <p class="review-text">
+                    " {{ card.quote }} "
+                </p>
+
+                <!-- Footer -->
+                <div class="testimonial-footer">
+
+                    <!-- Left: user -->
+                    <div class="user-info">
+                        <img [src]="card.image"
+                             alt="User Avatar"
+                             class="user-avatar" />
+
+                        <div class="user-meta">
+                            <p class="user-name">{{ card.name }}</p>
+                            <p class="user-location">{{ card.location }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: stars -->
+                    <div class="stars">
+                        {{ card.stars }}
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        }
+
+    </div>
+</section>
+
+
+<footer class=" bg-lime-300 text-black z-50">
+
+    <!-- MAIN FOOTER -->
+    <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+
+        <!-- BRAND -->
+        <div>
+            <div class="flex items-center gap-3 mb-4">
+                <img src="../../assets/logo-icon.png"
+                     alt="Luxro logo"
+                     class="w-10 h-10 rounded-md object-contain cursor-pointer hover:scale-105 transition" />
+                <h3 class="text-black text-3xl font-bold tracking-wide cursor-pointer hover:scale-105 transition">
+                    Luxro
+                </h3>
+            </div>
+
+            <p class="text-sm leading-relaxed mb-6 max-w-xs font-semibold">
+                Premium self-drive car rentals and host-powered mobility platform
+                across major Indian cities.
+            </p>
+
+            <div id="SocailIcons"
+                 class="footer-socials">
+
+                <div class="icons instaIcon">
+                    <p class="iconName">Instagram</p>
+                    <div class="icon insta">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24"
+                             width="35"
+                             fill="currentColor">
+                            <path
+                                  d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm4.75-2.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </svg>
+
+                    </div>
+                </div>
+
+                <div class="icons linkedin">
+                    <p class="iconName">Twitter</p>
+                    <div class="icon link">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24"
+                             width="35"
+                             fill="currentColor">
+                            <path
+                                  d="M22.46 6c-.77.35-1.6.58-2.46.69a4.3 4.3 0 0 0 1.88-2.38 8.6 8.6 0 0 1-2.72 1.04 4.28 4.28 0 0 0-7.3 3.9A12.15 12.15 0 0 1 3.15 4.8a4.28 4.28 0 0 0 1.32 5.7 4.24 4.24 0 0 1-1.94-.54v.05a4.28 4.28 0 0 0 3.44 4.19 4.3 4.3 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98A8.6 8.6 0 0 1 2 19.54 12.14 12.14 0 0 0 8.29 21c7.55 0 11.68-6.26 11.68-11.68 0-.18 0-.36-.01-.54A8.36 8.36 0 0 0 22.46 6z" />
+                        </svg>
+
+                    </div>
+                </div>
+
+                <div class="icons whatsapp">
+                    <p class="iconName">LinkedIn</p>
+                    <div class="icon whats">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24"
+                             width="35"
+                             fill="currentColor">
+                            <path
+                                  d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 8.98h3.96V21H3V8.98zm7.53 0h3.8v1.64h.05c.53-1 1.82-2.05 3.74-2.05 4 0 4.74 2.63 4.74 6.05V21h-3.96v-5.44c0-1.3-.03-2.97-1.81-2.97-1.81 0-2.09 1.41-2.09 2.87V21h-3.96V8.98z" />
+                        </svg>
+
+                    </div>
+                </div>
+
+                <div class="icons youtube">
+                    <p class="iconName">Facebpok</p>
+                    <div class="icon tube">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24"
+                             width="35"
+                             fill="currentColor">
+                            <path
+                                  d="M22 12a10 10 0 1 0-11.5 9.95v-7.04H8v-2.91h2.5V9.8c0-2.47 1.47-3.84 3.72-3.84 1.08 0 2.2.2 2.2.2v2.42h-1.24c-1.22 0-1.6.76-1.6 1.54v1.85H16.5l-.5 2.91h-2.42v7.04A10 10 0 0 0 22 12z" />
+                        </svg>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- COMPANY -->
+        <div>
+            <h4 class="text-black font-bold mb-4 text-1xl underline underline-offset-8 decoration-2">Company</h4>
+            <ul class="space-y-3 text-sm">
+                <li><a routerLink="/about"
+                       class="hover:text-pink-500 font-semibold cursor-pointer">About Us</a></li>
+                <li><a routerLink="/careers"
+                       class="hover:text-pink-500 font-semibold cursor-pointer">Careers</a></li>
+                <li><a routerLink="/contact"
+                       class="hover:text-pink-500 font-semibold cursor-pointer">Contact</a></li>
+                <li><a routerLink="/partner"
+                       class="hover:text-pink-500 font-semibold cursor-pointer">Become a Host</a></li>
+            </ul>
+        </div>
+
+        <!-- SUPPORT -->
+        <div>
+            <h4 class="text-black font-bold mb-4 text-1xl underline underline-offset-8 decoration-2">Support</h4>
+            <ul class="space-y-3 text-sm">
+                <li><a routerLink="/contact"
+                       class="hover:text-pink-500 font-semibold cursor-pointer">Help Center</a></li>
+                <li><a routerLink="/contact"
+                       class="hover:text-pink-500 font-semibold cursor-pointer">FAQs</a></li>
+                <li><a routerLink="/about"
+                       class="hover:text-pink-500 font-semibold cursor-pointer">Terms of Service</a></li>
+                <li><a routerLink="/about"
+                       class="hover:text-pink-500 font-semibold cursor-pointer">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <!-- APP -->
+        <div>
+            <h4 class="text-black font-bold mb-4 text-1xl underline underline-offset-8 decoration-2">Get the App</h4>
+            <p class="text-sm mb-5 max-w-xs">
+                Download Luxro to book cars or manage your host account.
+            </p>
+
+            <div class="flex gap-3 .footer-store-buttons">
+                <ul class="space-y-3 text-sm">
+                    <li><a class="hover:text-pink-500 font-semibold cursor-pointer">Google Play</a></li>
+                    <li><a class="hover:text-pink-500 font-semibold cursor-pointer">App Store</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- BOTTOM BAR -->
+    <div class="border-t border-gray-800 text-center text-xs py-4 text-gray-700 font-semibold">
+        © 2025 Luxro Mobility Pvt Ltd. All rights reserved.
+    </div>
+
+</footer>

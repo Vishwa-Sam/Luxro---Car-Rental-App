@@ -1,0 +1,225 @@
+@if (selectedCar()) {
+<div class="bg-lime-300 text-black"
+     @contentFadeInOut>
+    <app-progress-indicator [currentStep]="3"></app-progress-indicator>
+
+    <div class="container mx-auto px-4 py-8 space-y-8">
+        <div class="text-center space-y-2">
+            <h1 class="text-3xl font-bold text-gray-900">Booking Confirmed!</h1>
+            <p class="text-gray-600 text-lg">Thank you for choosing us. Our employee will call shortly to confirm the
+                details.</p>
+        </div>
+
+        @if (selectedCar()?.car; as car) {
+        <!-- Car Summary -->
+        <div class="uiverse-card-wrapper">
+            <div class="uiverse-card">
+
+                <div class="gradient-overlay"></div>
+
+                <div class="uiverse-card-inner flex flex-col md:flex-row gap-6">
+
+                    <div class="w-full md:w-1/3 h-64 rounded-lg overflow-hidden relative z-10">
+                        <img [src]="car.img"
+                             [alt]="car.name"
+                             class="w-full h-full object-cover rounded-lg" />
+                    </div>
+
+                    <!-- Car Info -->
+                    <div class="flex-1 space-y-4 text-white relative z-10">
+                        <h2 class="text-2xl font-bold">
+                            {{ car.name }} • {{ car.model }}
+                        </h2>
+                        <p class="opacity-90">
+                            {{ car.carType }} • {{ car.seater }} Seater •
+                            {{ car.transmission }} • {{ car.fuelType }}
+                        </p>
+                        <p class="font-semibold">
+                            Location: {{ car.location }}
+                        </p>
+                        <p class="opacity-90">
+                            Host: {{ car.hostName }} ({{ car.hostLocation }})
+                        </p>
+                        <p class="mt-5 opacity-90">
+                            Trip: {{ tripDetails().pickup }} → {{ tripDetails().dropoff }} <br>
+                            From {{ tripDetails().startDate }} to {{ tripDetails().endDate }}
+                        </p>
+                        <p class="mt-5 font-semibold text-teal-300">
+                            Total Price: ₹{{ totalAmount() }}
+                            <span class="text-white opacity-80">
+                                (Payment upon delivery/pickup)
+                            </span>
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        }
+
+        <!-- User Details Section -->
+        <div class="flex justify-center">
+            <div class="relative">
+
+                <!-- MAIN CARD -->
+                <div class="card p-8 text-white relative z-10 space-y-4">
+
+                    <h3 class="text-3xl font-bold text-center pb-4">
+                        Your Details
+                    </h3>
+                    <div class="space-y-5 text-md opacity-95">
+                        <p>
+                            <strong>Name:</strong>
+                            {{ userDetails()?.firstName }} {{ userDetails()?.lastName }}
+                        </p>
+                        <p>
+                            <strong>Email:</strong>
+                            {{ userDetails()?.email }}
+                        </p>
+                        <p>
+                            <strong>Phone:</strong>
+                            {{ userDetails()?.phone }}
+                        </p>
+                        <p>
+                            <strong>Address:</strong>
+                            {{ userDetails()?.address }}
+                        </p>
+                        <p>
+                            <strong>City:</strong>
+                            {{ userDetails()?.city }}
+                        </p>
+                        <p>
+                            <strong>State:</strong>
+                            {{ userDetails()?.state }}
+                        </p>
+                        <p>
+                            <strong>Pincode:</strong>
+                            {{ userDetails()?.pincode }}
+                        </p>
+                        <p>
+                            <strong>Driver-Needed:</strong>
+                            {{ userDetails()?.driverNeeded }}
+                        </p>
+                        <p>
+                            <strong>Delivery-Type:</strong>
+                            {{ userDetails()?.deliveryType }}
+                        </p>
+
+                    </div>
+
+                </div>
+                <div class="card_back"></div>
+            </div>
+
+        </div>
+
+        <!-- Alerts / Instructions -->
+        <div class="page">
+            <div class="margin"></div>
+
+            <p class="font-semibold">
+                Important Instructions:
+            </p>
+            <ul>
+                <li>Payment will be collected only when receiving the car.</li>
+                <li>Fuel is not provided; please refuel as needed.</li>
+                <li>Our agent will take photos of the car upon delivery.</li>
+                <li>
+                    If any damage is identified during inspection after the completion of the trip,
+                    <span class="font-medium">
+                        repair charges will be collected based on the extent of damage
+                    </span>.
+                </li>
+
+                @if (isDoorDelivery()) {
+                <li>
+                    Delivery Type: Door Delivery – Please hand over the documents to the delivery agent.
+                </li>
+                }
+
+                @if (!isDoorDelivery()) {
+                <li>
+                    Delivery Type: Pickup – Please provide the documents to the receptionist.
+                </li>
+                }
+
+                <li>Valid driving license and government ID are required.</li>
+                <li>
+                    Check the car’s condition and mileage before taking it, and
+                    <span class="font-medium">
+                        coordinate with the delivery person to report any existing damages during the
+                        photo inspection
+                    </span>.
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="bg-slate-800 border border-slate-700 grid grid-cols-6 gap-3 rounded-xl p-4 text-sm">
+
+            <h2 class="col-span-6 text-center text-slate-300 text-3xl font-bold">
+                Feedback
+            </h2>
+            <p class="col-span-6 text-slate-400 text-xl text-center">
+                Please rate your experience and provide feedback on using our app:
+            </p>
+            <textarea [(ngModel)]="feedback"
+                      rows="4"
+                      placeholder="Your feedback..."
+                      class="col-span-6 bg-slate-700 text-slate-300 placeholder:text-slate-300 placeholder:opacity-50 border border-slate-600 resize-none outline-none rounded-lg p-3 duration-300 focus:border-slate-300"></textarea>
+
+            <div class="col-span-3 flex items-center gap-2">
+                @for (star of [1,2,3,4,5]; track $index) {
+                <button (click)="setRating(star)"
+                        [class.text-slate-500]="star > rating()"
+                        class="text-3xl text-yellow-400 duration-200 hover:scale-110 focus:outline-none">
+                    ★
+                </button>
+                }
+                <span class="text-slate-400 ml-2">
+                    {{ rating() }} / 5
+                </span>
+            </div>
+
+            <div class="col-span-3 flex justify-end">
+                <button (click)="submitFeedback()"
+                        class="btn">
+                    <span>Submit Feedback</span>
+                </button>
+            </div>
+
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-4 justify-center">
+            <button type="button"
+                    (click)="backToHome()"
+                    class="bg-white text-center w-64 rounded-2xl h-14 relative text-black text-xl font-semibold group cursor-pointer mb-7">
+                <div
+                     class="bg-green-400 rounded-xl h-12 w-1/4 flex items-center justify-center absolute left-1 top-1 group-hover:w-62 z-10 duration-500">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 1024 1024"
+                         height="25"
+                         width="25">
+                        <path d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"
+                              fill="#000000" />
+                        <path d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z"
+                              fill="#000000" />
+                    </svg>
+                </div>
+
+                <p class="translate-x-6">Back to Home</p>
+            </button>
+            <button class="uiverse-btn"
+                    (click)="continueRenting()"><span>Continue Renting</span></button>
+        </div>
+
+    </div>
+</div>
+
+} @else {
+<div class="min-h-[60vh] flex items-center justify-center">
+    <p class="text-xl text-gray-500">No car selected for checkout.</p>
+</div>
+}

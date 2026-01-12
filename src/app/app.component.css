@@ -1,0 +1,23 @@
+.app-root,
+app-root,
+main{
+  width: 100%;
+  max-width: 100%;
+}
+
+app-root,
+router-outlet + *{
+  display: block;
+  width: 100%;
+}
+
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}

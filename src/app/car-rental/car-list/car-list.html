@@ -1,0 +1,7 @@
+<div class="car-card-section grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-6">
+    @for (carList of cars() ; track $index) {
+    <app-car-card [car]="carList"
+                  [id]="carList.id"
+                  [@cardAnimation]></app-car-card>
+    }
+</div>

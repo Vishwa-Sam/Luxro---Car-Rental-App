@@ -1,0 +1,134 @@
+<div class="bg-black text-lime-300 min-h-screen">
+
+  <div class="container mx-auto px-4 py-4 space-y-4 border-b-2">
+
+    <!-- trip-details section(form) -->
+    <div class="bg-lime-300 py-8 -mx-[calc((99vw-100%)/2)]">
+      <div class="max-w-7xl mx-auto px-6">
+        <app-trip-details></app-trip-details>
+      </div>
+    </div>
+
+    <!-- search bar section-->
+    <div class="w-full flex justify-center mt-12">
+      <div class="searchBox">
+
+        <input class="searchInput"
+               type="text"
+               placeholder="Search Your Dream Cars..."
+               [(ngModel)]="searchInput"
+               (ngModelChange)="onSearch($event)" />
+
+        <button class="searchButton"
+                type="button"
+                (click)="onSearch(searchInput)">
+          <svg xmlns="http://www.w3.org/2000/svg"
+               width="29"
+               height="29"
+               viewBox="0 0 29 29"
+               fill="none">
+            <g clip-path="url(#clip0_2_17)">
+              <g filter="url(#filter0_d_2_17)">
+                <path d="M23.7953 23.9182L19.0585 19.1814M19.0585 19.1814C19.8188 18.4211 20.4219 17.5185 20.8333 16.5251C21.2448 15.5318 21.4566 14.4671 21.4566 13.3919C21.4566 12.3167 21.2448 11.252 20.8333 10.2587C20.4219 9.2653 19.8188 8.36271 19.0585 7.60242C18.2982 6.84214 17.3956 6.23905 16.4022 5.82759C15.4089 5.41612 14.3442 5.20435 13.269 5.20435C12.1938 5.20435 11.1291 5.41612 10.1358 5.82759C9.1424 6.23905 8.23981 6.84214 7.47953 7.60242C5.94407 9.13789 5.08145 11.2204 5.08145 13.3919C5.08145 15.5634 5.94407 17.6459 7.47953 19.1814C9.01499 20.7168 11.0975 21.5794 13.269 21.5794C15.4405 21.5794 17.523 20.7168 19.0585 19.1814Z"
+                      stroke="white"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      shape-rendering="crispEdges" />
+              </g>
+            </g>
+            <defs>
+              <filter id="filter0_d_2_17"
+                      x="-0.418549"
+                      y="3.70435"
+                      width="29.7139"
+                      height="29.7139"
+                      filterUnits="userSpaceOnUse"
+                      color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0"
+                         result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha"
+                               type="matrix"
+                               values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                               result="hardAlpha" />
+                <feOffset dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha"
+                             operator="out" />
+                <feColorMatrix type="matrix"
+                               values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                <feBlend mode="normal"
+                         in2="BackgroundImageFix"
+                         result="effect1_dropShadow_2_17" />
+                <feBlend mode="normal"
+                         in="SourceGraphic"
+                         in2="effect1_dropShadow_2_17"
+                         result="shape" />
+              </filter>
+              <clipPath id="clip0_2_17">
+                <rect width="28.0702"
+                      height="28.0702"
+                      fill="white"
+                      transform="translate(0.403503 0.526367)" />
+              </clipPath>
+            </defs>
+          </svg>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- quick filter(buttons) -->
+    <div class="flex justify-center ">
+      <app-quick-filter (quickFilterChange)="onQuickFilter($event)"></app-quick-filter>
+    </div>
+  </div>
+
+  <div class="mx-auto py-4 flex gap-6 px-4 lg:px-0 ">
+
+    <!-- Filter Sidebar -->
+    <div class="w-72 shrink-0 sticky top-4 self-start">
+      <div class="bg-lime-300 text-black rounded-xl shadow p-4 max-h-[calc(100vh-6rem)] overflow-y-auto">
+        <app-car-filter (sideFilterChange)="onSideFilter($event)"
+                        (clearSideFilter)="onClearFilter()"
+                        [clearCheck]="clearCheckbox()"></app-car-filter>
+      </div>
+    </div>
+
+    <!-- Car List Section -->
+    <div class="flex-1">
+      <div class="car-list-section pr-6">
+
+        @if (filteredCars().length > 0) {
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-5">
+          <app-car-list [cars]="filteredCars()"></app-car-list>
+        </div>
+        }
+        @else {
+        <div class="text-center py-20 text-lime-300">
+          <p class="text-4xl font-bold mb-3">No cars found 🚫</p>
+          <p class="text-gray-200 text-2xl">
+            Try changing your search or filter criteria.
+          </p>
+        </div>
+        }
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Car detail dialog section -->
+  @if (isDetailOpen()) {
+  <!--background overlay -->
+  <div class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"></div>
+
+  <!-- Modal container -->
+  <div class="fixed inset-0 z-50 flex items-center justify-center p-6"
+       (click)="closeDetail()">
+    <div class="bg-linear-to-br from-black via-gray-900 to-black rounded-2xl shadow-2xl w-full max-w-7xl max-h-[95vh] overflow-y-auto p-6"
+         (click)="$event.stopPropagation()">
+      <router-outlet name="detail"></router-outlet>
+    </div>
+  </div>
+  }

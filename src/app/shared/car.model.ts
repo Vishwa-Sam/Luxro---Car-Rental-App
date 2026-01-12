@@ -1,0 +1,27 @@
+export class CarModel {
+  constructor(
+    public id: string | number,
+    public name: string,
+    public model: number,
+    public img: string,
+    public transmission: string,
+    public seater: string,
+    public fuelType: string,
+    public carType: string,
+    public ratings: string | number,
+    public availabilty: string,
+    public price: number,
+    public priceCalc: string,
+    public location: string,
+    public luxury: boolean,
+    public images?: string[],
+    public deliveryType?: string,
+    public description?: string,
+    public features?: string[],
+    public mileage?: string,
+    public insuranceIncluded?: boolean,
+    public extraFees?: string,
+    public hostName?: string,
+    public hostLocation?: string,
+  ) {}
+}

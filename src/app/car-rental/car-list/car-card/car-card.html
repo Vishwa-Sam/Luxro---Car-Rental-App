@@ -1,0 +1,85 @@
+<div class="witcher-card-container">
+    @if (alertType) {
+    <div class="toast-container">
+        <app-alert-message [type]="alertType"
+                           [message]="alertMessage"
+                           (close)="alertType = null; alertMessage = ''"></app-alert-message>
+    </div>
+    }
+
+    <div class="witcher-card"
+         tabindex="0">
+
+        <div class="witcher-card-corner top-left"></div>
+        <div class="witcher-card-corner top-right"></div>
+        <div class="witcher-card-corner bottom-left"></div>
+        <div class="witcher-card-corner bottom-right"></div>
+
+        <!-- Card Content -->
+        <div class="witcher-card-content">
+
+            <div class="witcher-image-wrapper">
+                <img [src]="car()?.img"
+                     [alt]="car()?.name"
+                     class="witcher-image" />
+            </div>
+
+            <div class="witcher-title-row">
+                <h2>{{ car()?.name }} • {{ car()?.model }}</h2>
+                <div class="witcher-rating">
+                    ★ {{ car()?.ratings }}
+                </div>
+            </div>
+
+            <div class="witcher-status-row">
+                <span class="witcher-available">{{ car()?.availabilty }}</span>
+                <span class="witcher-delivery">{{ car()?.deliveryType }}</span>
+            </div>
+
+            <div class="witcher-specs-row">
+                <span>{{ car()?.carType }}</span>
+                <span>{{ car()?.transmission }}</span>
+                <span>{{ car()?.seater }} Seater</span>
+                <span>{{ car()?.fuelType }}</span>
+            </div>
+
+            <div class="witcher-price-row">
+                <div class="witcher-price">
+                    ₹{{ car()?.price }} <small>/hr</small>
+                </div>
+                <div class="witcher-location">
+                    {{ car()?.location }}
+                </div>
+            </div>
+
+            <div class="witcher-actions">
+
+                <button class="Btn"
+                        (click)="onAddtoCheckout(car()!)"
+                        [disabled]="hasCarInCheckout()">
+                    <span class="btn-bg"></span>
+
+                    <span class="btn-text">
+                        {{ hasCarInCheckout() ? 'Cart already has a car' : 'Add to Checkout' }}
+                    </span>
+
+                </button>
+
+                <button class="Btn"
+                        (click)="onAddToWishlist()"
+                        [disabled]="inListAlready()">
+                    <span class="btn-bg"></span>
+                    <span class="btn-text">
+                        {{ inListAlready() ? 'Already in Wishlist' : 'Add to Wishlist' }}
+                    </span>
+                </button>
+
+                <button class="Btn btn-detail"
+                        (click)="goToDetails()">
+                    View Car Details
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>

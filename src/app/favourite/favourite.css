@@ -1,0 +1,387 @@
+.witcher-card-container {
+  display: flex;
+  justify-content: center;
+}
+
+.witcher-card {
+  --gold: #cba874;
+  --dark: #121214;
+  --silver-dark: #4a4a4a;
+
+  position: relative;
+  width: 23rem;
+  height: 33rem;
+  background: var(--dark);
+  border: 0.2em solid var(--silver-dark);
+  border-radius: 1.25rem;
+  padding: 1rem;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s;
+}
+
+.witcher-card:hover {
+  transform: translateY(-0.5em);
+  border-color: var(--gold);
+  box-shadow:
+    0 1.5em 3em rgba(0, 0, 0, 0.9),
+    0 0 1.5em rgba(203, 168, 116, 0.15);
+}
+
+.witcher-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(203, 168, 116, 0.15),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.witcher-card:hover::before {
+  opacity: 1;
+}
+
+.witcher-card-corner {
+  position: absolute;
+  width: 1.75em;
+  height: 1.75em;
+  border: 0.15em solid var(--gold);
+  opacity: 0.6;
+  transition:
+    width 0.45s ease,
+    height 0.45s ease,
+    opacity 0.45s ease,
+    border-color 0.45s ease;
+  pointer-events: none;
+}
+
+.top-left {
+  top: 0.75em;
+  left: 0.75em;
+  border-right: none;
+  border-bottom: none;
+}
+
+.top-right {
+  top: 0.75em;
+  right: 0.75em;
+  border-left: none;
+  border-bottom: none;
+}
+
+.bottom-left {
+  bottom: 0.75em;
+  left: 0.75em;
+  border-right: none;
+  border-top: none;
+}
+
+.bottom-right {
+  bottom: 0.75em;
+  right: 0.75em;
+  border-left: none;
+  border-top: none;
+}
+
+.witcher-card:hover .witcher-card-corner {
+  width: calc(100% - 1.5em);
+  height: calc(100% - 1.5em);
+  opacity: 1;
+  border-color: rgba(203, 168, 116, 0.35);
+}
+
+.witcher-card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  height: 100%;
+}
+
+.witcher-image-wrapper {
+  height: 13rem;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.witcher-image {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 15px;
+  object-fit: cover;
+}
+
+.witcher-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  color: #ffffff;
+  padding-bottom: 10px;
+}
+
+.witcher-rating {
+  color: #facc15;
+  font-size: 0.9rem;
+}
+
+.witcher-status-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  padding-bottom: 10px;
+}
+
+.witcher-available {
+  background: #22c55e;
+  color: #ffffff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.witcher-delivery {
+  color: #ececec;
+  font-weight: 600;
+}
+
+.witcher-specs-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  color: #fcf8f8;
+}
+
+.witcher-specs-row span {
+  background: #1f1f23;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.4rem;
+  padding-bottom: 10px;
+}
+
+.witcher-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.witcher-price {
+  color: var(--gold);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.witcher-location {
+  font-size: 0.8rem;
+  color: #cac8c8;
+  font-weight: 600;
+}
+
+.witcher-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.witcher-btn {
+  width: 100%;
+  padding: 0.55rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.Btn {
+  width: 330px;
+  height: 44px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 10px;
+
+  background: linear-gradient(
+    to right,
+    #77530a,
+    #ffd277,
+    #77530a,
+    #77530a,
+    #ffd277,
+    #77530a
+  );
+  background-size: 250%;
+  background-position: left;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  overflow: hidden;
+
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.6px;
+  color: #ffd277;
+
+  transition: background-position 1s, transform 0.15s ease;
+}
+
+.Btn::before {
+  content: "";
+  position: absolute;
+  inset: 3%;
+
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.85);
+
+  z-index: 1;
+}
+
+.Btn > * ,
+.Btn {
+  z-index: 2;
+}
+
+.Btn:hover {
+  background-position: right;
+}
+
+.Btn:active {
+  transform: scale(0.95);
+}
+
+.btn-delete::before {
+  content: "DELETE FROM WISHLIST";
+  padding: 10px 20px;
+}
+
+.btn-checkout::before {
+  content: "ADD TO CHECKOUT";
+  padding: 10px 20px;
+}
+
+
+/* ====== RESPONSIVE DESIGN ====== */
+@media (max-width: 1200px) {
+  .car-card-section {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .witcher-card {
+    width: 21rem;
+    height: 31rem;
+  }
+
+  .Btn {
+    width: 300px;
+  }
+
+  .witcher-image-wrapper {
+    height: 12rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .car-card-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .witcher-card {
+    width: 20rem;
+    height: 33rem;
+  }
+
+  .Btn {
+    width: 280px;
+    height: 4rem;
+    font-size: 0.9rem;
+  }
+
+  .witcher-title-row h2 {
+    font-size: 1rem;
+  }
+
+  .witcher-price {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .car-card-section {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .witcher-card {
+    width: 100%;
+    max-width: 22rem;
+    height: auto;
+  }
+
+  .witcher-image-wrapper {
+    height: 11rem;
+  }
+
+  .Btn {
+    width: 100%;
+  }
+
+  .witcher-actions {
+    align-items: center;
+  }
+
+  .witcher-specs-row span {
+    font-size: 0.65rem;
+  }
+
+  .witcher-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .witcher-card {
+    padding: 0.7rem;
+  }
+
+  .witcher-image-wrapper {
+    height: 9.5rem;
+  }
+
+  .witcher-title-row h2 {
+    font-size: 0.95rem;
+  }
+
+  .witcher-price {
+    font-size: 0.95rem;
+  }
+
+  .witcher-location {
+    font-size: 0.7rem;
+  }
+
+  .Btn {
+    height: 40px;
+    font-size: 0.85rem;
+  }
+
+  .witcher-status-row {
+    font-size: 0.7rem;
+  }
+
+  .witcher-available {
+    font-size: 0.75rem;
+  }
+
+  .witcher-rating {
+    font-size: 0.8rem;
+  }
+}

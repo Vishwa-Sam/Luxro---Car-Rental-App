@@ -1,0 +1,75 @@
+@if (application) {
+<section class="min-h-screen px-6 py-24 bg-lime-300"
+         @contentFadeInOut>
+
+  <!-- SUCCESS MESSAGE -->
+  <div class="bg-green-200 border border-green-300 rounded-2xl p-10 mb-12 text-center">
+    <h2 class="text-4xl font-bold text-green-700 mb-4">
+      Application Submitted Successfully 🎉
+    </h2>
+
+    <p class="text-gray-700 max-w-3xl mx-auto font-semibold text-lg">
+      Thank you for applying for the
+      <strong>{{ application.role }}</strong> role at
+      <strong>Luxro</strong>.
+      Our hiring team will carefully review your application and reach out if
+      your profile matches our requirements.
+    </p>
+  </div>
+
+  <!-- APPLICATION DETAILS -->
+  <div class="flex justify-center">
+
+    <div class="relative">
+      <div class="card p-8 text-white relative z-10">
+
+        <h3 class="text-2xl font-semibold mb-2">
+          Application Details
+        </h3>
+
+        <p class="text-sm opacity-80 mb-6">
+          Applied on:
+          {{ application.appliedAt | date:'medium' }}
+        </p>
+        <p class="mb-6">
+          Thank you <strong>{{ application.fullName }}</strong> for applying to the
+          <strong>{{ application.role }}</strong> role at Luxro.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-4 text-sm">
+
+          <p><strong>Email:</strong> {{ application.email }}</p>
+          <p><strong>Phone:</strong> {{ application.phone }}</p>
+          <p class="md:col-span-2">
+            <strong>Address:</strong> {{ application.address }}
+          </p>
+          <p><strong>Experience:</strong> {{ application.experience || 'N/A' }}</p>
+          <p><strong>Expected Salary:</strong> {{ application.expectedSalary }}</p>
+
+          <p class="md:col-span-2">
+            <strong>Why Hire You:</strong>
+            {{ application.reasonToHire }}
+          </p>
+          <p class="md:col-span-2">
+            <strong>Resume:</strong>
+            {{ application.resume?.name || 'Not uploaded' }}
+          </p>
+
+        </div>
+
+        <div class="pt-8">
+          <button class="uiverse-btn"
+                  (click)="onNavigateTo()">
+            <span>Back to Careers</span>
+          </button>
+        </div>
+
+      </div>
+
+      <div class="card_back"></div>
+
+    </div>
+
+  </div>
+</section>
+}

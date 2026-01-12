@@ -1,0 +1,273 @@
+<section class="bg-linear-to-b to-lime-400 via-lime-300 from-white overflow-hidden"
+         @contentFadeInOut>
+  <div class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
+
+    <div>
+      <span class="inline-block bg-black text-white px-4 py-1 rounded-full mb-4 font-bold">
+        About Luxro
+      </span>
+
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+        Redefining the Way India Rents Cars
+      </h1>
+
+      <p class="text-gray-800 mb-10 max-w-xl font-semibold">
+        Luxro is a technology-driven car rental platform built to deliver
+        premium, flexible, and transparent mobility experiences for modern users.
+      </p>
+
+      <div class="flex flex-wrap gap-4">
+        <span class="flex items-center gap-3 bg-black text-white px-4 py-2 rounded-full whitespace-nowrap">
+          <span class="text-xl">🚗</span>
+          <span class="font-semibold">12K+</span>
+          <span class="text-sm">Cars Listed</span>
+        </span>
+
+        <span class="flex items-center gap-3 bg-black text-white px-4 py-2 rounded-full whitespace-nowrap">
+          <span class="text-xl">👥</span>
+          <span class="font-semibold">1M+</span>
+          <span class="text-sm">Users</span>
+        </span>
+
+        <span class="flex items-center gap-3 bg-black text-white px-4 py-2 rounded-full whitespace-nowrap">
+          <span class="text-xl">🌍</span>
+          <span class="font-semibold">90+</span>
+          <span class="text-sm">Cities</span>
+        </span>
+
+        <span class="flex items-center gap-3 bg-black text-white px-4 py-2 rounded-full whitespace-nowrap">
+          <span class="text-xl">🔁</span>
+          <span class="font-semibold">70L+</span>
+          <span class="text-sm">Trips</span>
+        </span>
+      </div>
+
+    </div>
+
+    <div class="relative">
+      <img src="../../../assets/hero-about.png"
+           alt="About Luxro"
+           class="w-full max-w-none lg:w-[120%] xl:w-[140%] drop-shadow-2xl -translate-y-4" />
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= PROBLEM ================= -->
+<main class="bg-black text-lime-300">
+  <section class="py-20">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-6">
+        The Problem We Set Out to Solve
+      </h2>
+
+      @for (desc of problem; track $index) {
+         <p class="text-white leading-loose mx-auto mb-4">
+       {{ desc.content }}
+      </p>
+      }
+      
+    </div>
+  </section>
+
+  <!-- ================= SOLUTION ================= -->
+  <section class="py-20 border-t-4 border-lime-300">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-3">
+        Our Solution, Revealed
+      </h2>
+      <p class="text-center font-semibold text-white text-lg mb-12">
+        Hover to uncover the details
+      </p>
+
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 justify-items-center">
+
+        @for (Scard of solutions; track $index) {
+        <div class="luxro-card group">
+          <div class="luxro-card-content">
+            <div class="text-center px-4">
+              <h3 class="title text-2xl font-bold mb-3">{{ Scard.title }}</h3>
+              <p class="text-xl opacity-80">
+                {{ Scard.description }}
+              </p>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MISSION & VISION ================= -->
+  <section class="py-24 border-t-4 border-lime-300">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <h2 class="text-4xl font-bold text-center mb-20">
+        Our Mission & Vision
+      </h2>
+
+      @for (statement of missionVision; track statement.title; let i = $index) {
+      <div class="flex flex-col md:flex-row items-center gap-12 mb-20"
+           [ngClass]="{
+          'md:flex-row-reverse': i % 2 !== 0
+        }">
+
+        <div class="md:w-1/2">
+          <h3 class="text-2xl font-semibold mb-4">
+            {{ statement.title }}
+          </h3>
+
+          @for (paragraph of statement.description; track paragraph) {
+          <p class="text-white mb-4 leading-loose">
+            {{ paragraph }}
+          </p>
+          }
+        </div>
+
+        <div class="md:w-1/2">
+          <img [src]="statement.image"
+               [alt]="statement.title"
+               class="rounded-4xl w-full h-110 object-contain brightness-95 contrast-105" />
+        </div>
+      </div>
+      }
+
+    </div>
+  </section>
+
+  <!-- ================= HOW LUXRO WORKS ================= -->
+  <section class="py-24 border-t-4 border-lime-300">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <h2 class="text-3xl font-semibold text-center mb-16">
+        How Luxro Works
+      </h2>
+
+      <div class="grid md:grid-cols-3 justify-items-center">
+        @for (step of howWorksSteps; track step.title) {
+        <div class="card">
+          <div class="bg">
+            <h3 class="text-xl font-bold mb-3 text-center">
+              {{ step.title }}
+            </h3>
+
+            <p class="text-white text-sm font-semibold leading-relaxed text-center">
+              {{ step.description }}
+            </p>
+          </div>
+
+          <div class="blob"></div>
+        </div>
+        }
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= VALUES ================= -->
+  <section class="py-24 border-t-4 border-lime-300">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+
+      <h2 class="text-3xl font-semibold mb-16">
+        Our Values
+      </h2>
+
+      <div class="cards justify-center">
+        @for (value of coreValues; track value.title; let i = $index) {
+        <div class="card"
+             [ngClass]="{
+            'c1': i === 0,
+            'c2': i === 1,
+            'c3': i === 2,
+            'c4': i === 3,
+            'c5': i === 4
+          }">
+          <p class="tip">{{ value.title }}</p>
+          <p class="second-text">{{ value.description }}</p>
+        </div>
+        }
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= IMPACT ================= -->
+  <section class="py-20 border-t-4 border-lime-300">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-16">
+        Our Impact So Far
+      </h2>
+
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-3xl font-bold">90+</h3>
+          <p class="text-white pt-3">Cities Served</p>
+        </div>
+        <div>
+          <h3 class="text-3xl font-bold">35K+</h3>
+          <p class="text-white pt-3">Hosts Onboarded</p>
+        </div>
+        <div>
+          <h3 class="text-3xl font-bold">70L+</h3>
+          <p class="text-white pt-3">Trips Completed</p>
+        </div>
+        <div>
+          <h3 class="text-3xl font-bold">₹100Cr+</h3>
+          <p class="text-white pt-3">Paid to Hosts</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHO WE SERVE ================= -->
+  <section class="py-24 border-t-4 border-lime-300">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+
+      <h2 class="text-4xl font-bold mb-12">
+        Who We Serve
+      </h2>
+      <p class="text-white font-semibold  mx-auto leading-loose mb-12">
+        Luxro is designed to serve a diverse range of customers — from urban
+        commuters and travelers to car owners seeking passive income opportunities.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="border rounded-xl p-6">Urban Professionals</div>
+        <div class="border rounded-xl p-6">Travelers & Tourists</div>
+        <div class="border rounded-xl p-6">Car Owners & Hosts</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="py-20 border-t-4 border-lime-300">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+
+      <h2 class="text-4xl font-bold mb-4">
+        Join the Luxro Journey
+      </h2>
+
+      <p class="text-white font-semibold mb-8 max-w-5xl mx-auto leading-loose">
+        Whether you’re exploring the city or earning from your car,
+        Luxro makes mobility simple, flexible, and rewarding.
+      </p>
+
+      <div class="flex justify-center gap-6">
+        <button class="btn-cta"
+                data-label="Explore Fleet"
+                (click)="onNavtoFleet()">
+          Explore Fleet
+        </button>
+
+        <button class="btn-cta"
+                data-label="Become a Host"
+                (click)="onNavtoHost()">
+          Become a Host
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+</main>

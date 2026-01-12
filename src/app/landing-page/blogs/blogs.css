@@ -1,0 +1,174 @@
+.card {
+  position: relative;
+  width: 570px;
+  height: 390px;
+  background: linear-gradient(-45deg, #0b2447 0%, #3f3a3a 100%);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card:hover {
+  transform: rotate(-3deg) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.card img {
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card__content {
+  position: absolute;
+  inset: 0;
+  padding: 20px;
+  background-color: black;
+  color: white;
+  opacity: 0;
+
+  transform: translateY(100%);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card:hover .card__content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover img {
+  scale: 0;
+  transform: rotate(-45deg);
+}
+
+.card__title {
+  margin: 0;
+  font-size: 18px;
+  color: rgb(255, 59, 59);
+  font-weight: 700;
+}
+
+.card__description {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #ffffff;
+  line-height: 1.5;
+}
+
+/* buttons */
+.btn-cta {
+  width: 250px;
+  height: 64px;
+  border: none;
+  border-radius: 10px;
+
+  background: linear-gradient(to right, #2b1100, #c2410c, #2b1100, #1a0a00, #fb923c, #2b1100);
+
+  background-size: 250%;
+  background-position: left;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: background-position 1s, transform 0.15s;
+  overflow: hidden;
+
+  color: transparent;
+}
+
+.btn-cta::before {
+  content: attr(data-label);
+  position: absolute;
+
+  width: 97%;
+  height: 90%;
+  border-radius: 8px;
+
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #ffffff;
+
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: background-position 1s;
+}
+
+.btn-cta:hover {
+  background-position: right;
+}
+
+.btn-cta:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 1200px) {
+  .card {
+    width: 500px;
+    height: 360px;
+  }
+
+  .btn-cta {
+    width: 220px;
+    height: 58px;
+  }
+}
+
+@media (max-width: 992px) {
+  .card {
+    width: 440px;
+    height: 330px;
+  }
+
+  .btn-cta {
+    width: 200px;
+    height: 54px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    max-width: 420px;
+    height: 300px;
+  }
+
+  .btn-cta {
+    width: 100%;
+    max-width: 260px;
+  }
+
+  section.grid {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .card {
+    max-width: 100%;
+    height: 280px;
+  }
+
+  .card__title {
+    font-size: 16px;
+  }
+
+  .card__description {
+    font-size: 13px;
+  }
+
+  .btn-cta {
+    height: 50px;
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,245 @@
+<div class="mx-auto px-6 py-20 bg-lime-300 text-black"
+     @contentFadeInOut>
+
+  <!-- ================= HERO ================= -->
+  <section class="border-b-4 border-black overflow-hidden group">
+    <div class="px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+      <div class="max-w-xl">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight
+                 text-gray-400 group-hover:text-black transition-colors duration-500">
+          Insights for Better Journeys
+        </h1>
+        <p class="text-lg leading-relaxed font-semibold
+                 text-gray-400 group-hover:text-gray-700
+                 transition-colors duration-500 delay-100">
+          Thoughtful stories on travel, driving, cities, and car care —
+          written to help you explore smarter and drive with confidence.
+        </p>
+      </div>
+
+      <div class="relative overflow-hidden rounded-2xl">
+        <img src="../../../assets/wishlist.jpg"
+             alt="Travel and driving insights"
+             class="w-full h-120 object-cover grayscale
+                 group-hover:grayscale-0
+                 group-hover:scale-105
+                 transition duration-700 ease-out" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURED EDITORIAL ================= -->
+  <section class="mt-20 mb-32 grid md:grid-cols-2 gap-12 items-center border-b-4 border-black pb-20">
+
+    <img src="../../../assets/blogs/featured-1.avif"
+         class="rounded-2xl w-full h-110 object-cover" />
+
+    <div>
+      <span class="inline-block bg-black text-white px-3 py-1 rounded-full text-sm mb-4">
+        Editor’s Spotlight
+      </span>
+
+      <h2 class="text-4xl font-bold mb-6 text-sky-600">
+        Journeys That Stay With You
+      </h2>
+      <p class="text-2xl text-gray-800 mb-6 leading-relaxed">
+        Great journeys aren’t defined only by destinations — they’re shaped by
+        the roads we take, the moments we pause for, and the decisions we make
+        along the way. From early morning highway drives to unexpected detours,
+        every experience adds meaning to the journey.
+      </p>
+      <p class="text-2xl text-gray-800 leading-relaxed">
+        Through our editorial picks, we explore stories that go beyond routes
+        and checklists. These are reflections on travel, driving culture, and
+        preparation — written to help you slow down, drive smarter, and enjoy
+        every mile with confidence.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- ================= MINI SECTION 1 ================= -->
+  <section class="grid md:grid-cols-2 gap-12 items-center mb-32 border-b-4 border-black pb-20">
+
+    <div>
+      <h3 class="text-4xl font-bold mb-6 text-sky-600">
+        The Joy of the Open Road
+      </h3>
+      <p class="text-2xl text-gray-800 mb-6 leading-relaxed">
+        There’s something deeply calming about long drives — the rhythm of the
+        road, the changing landscapes, and the quiet moments of reflection.
+        Whether you’re driving through hills, coastlines, or open highways,
+        the journey often becomes more memorable than the destination.
+      </p>
+      <p class="text-2xl text-gray-800 leading-relaxed">
+        Understanding your route, pacing your drive, and choosing comfort over
+        speed can completely change how you experience travel. These stories
+        focus on building journeys that feel intentional, unrushed, and truly
+        fulfilling.
+      </p>
+    </div>
+
+    <div class="overflow-hidden rounded-2xl">
+      <img src="../../../assets/blogs/mini-1.jpg"
+           class="w-full h-110 object-cover" />
+    </div>
+
+  </section>
+
+  <!-- ================= CARDS (FIRST SECTION) ================= -->
+  <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 place-items-center mb-32 border-b-4 border-black pb-20">
+    @for (blog of firstSection; track blog.id) {
+    <article class="card"
+             (click)="openBlog(blog)">
+      <img [src]="blog.coverImage"
+           class="card__image" />
+      <div class="card__content">
+        <p class="card__title">{{ blog.title }}</p>
+        <p class="card__description">{{ blog.excerpt }}</p>
+        <p class="text-xs text-orange-500 mt-3">
+          {{ blog.category }} • {{ blog.readTime }} min read
+        </p>
+      </div>
+    </article>
+    }
+  </section>
+
+  <!-- ================= MINI SECTION 2 ================= -->
+  <section class="grid md:grid-cols-2 gap-12 items-center mb-32 border-b-4 border-black pb-20">
+
+    <div class=" md:order-2">
+      <h3 class="text-4xl font-bold mb-6 text-sky-600">
+        Preparation Makes the Difference
+      </h3>
+      <p class="text-2xl text-gray-800 mb-6 leading-relaxed">
+        The best drives are rarely accidental. They’re the result of thoughtful
+        preparation — from vehicle readiness to understanding road conditions
+        and traffic patterns. A well-prepared journey reduces stress and allows
+        you to focus on enjoying the experience.
+      </p>
+      <p class="text-2xl text-gray-800 leading-relaxed">
+        These editorial pieces dive into the habits of confident drivers —
+        people who plan ahead, respect their vehicles, and prioritize safety
+        without sacrificing comfort or spontaneity.
+      </p>
+    </div>
+
+    <div class="overflow-hidden rounded-2xl md:order-1">
+      <img src="../../../assets/blogs/mini-2.webp"
+           class="w-full h-110 object-cover" />
+    </div>
+
+  </section>
+
+  <!-- ================= CARDS (SECOND SECTION) ================= -->
+  <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 place-items-center mb-32 border-b-4 border-black pb-20">
+    @for (blog of secondSection; track blog.id) {
+    <article class="card"
+             (click)="openBlog(blog)">
+      <img [src]="blog.coverImage"
+           class="card__image" />
+      <div class="card__content">
+        <p class="card__title">{{ blog.title }}</p>
+        <p class="card__description">{{ blog.excerpt }}</p>
+        <p class="text-xs text-orange-500 mt-3">
+          {{ blog.category }} • {{ blog.readTime }} min read
+        </p>
+      </div>
+    </article>
+    }
+  </section>
+
+  <!-- ================= MINI SECTION 3 ================= -->
+  <section class="grid md:grid-cols-2 gap-12 items-center mb-32 border-b-4 border-black pb-20">
+
+    <div>
+      <h3 class="text-4xl font-bold mb-6 text-sky-600">
+        Confidence Behind the Wheel
+      </h3>
+      <p class="text-2xl text-gray-800 mb-6 leading-relaxed">
+        Driving confidence doesn’t come from speed — it comes from awareness.
+        Knowing when to slow down, how to read road conditions, and how to stay
+        alert can make every drive safer and more enjoyable.
+      </p>
+      <p class="text-2xl text-gray-800 leading-relaxed">
+        These reflections focus on developing calm, confident driving habits
+        that help you handle unfamiliar roads, long distances, and solo travel
+        with ease and peace of mind.
+      </p>
+    </div>
+
+    <div class="overflow-hidden rounded-2xl">
+      <img src="../../../assets/blogs/mini-3.jpg"
+           class="w-full h-110 object-cover" />
+    </div>
+
+  </section>
+
+  <!-- ================= FINAL CARDS ================= -->
+  @if (thirdSection.length > 0) {
+  <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 place-items-center">
+    @for (blog of thirdSection; track blog.id) {
+    <article class="card"
+             (click)="openBlog(blog)">
+      <img [src]="blog.coverImage"
+           class="card__image" />
+      <div class="card__content">
+        <p class="card__title">{{ blog.title }}</p>
+        <p class="card__description">{{ blog.excerpt }}</p>
+      </div>
+    </article>
+    }
+  </section>
+  }
+
+  <!-- ================= BLOG CTA ================= -->
+  <section class="mt-40 mb-20 border-4 border-black rounded-3xl bg-black p-12 md:p-16">
+
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="inline-block mb-4 text-xs font-semibold uppercase
+                   bg-white text-black px-4 py-1 rounded-full">
+          Stay Inspired
+        </span>
+
+        <h2 class="text-4xl font-bold mb-6 leading-tight text-orange-500">
+          Make Every Journey Count
+        </h2>
+        <p class="text-2xl text-white mb-6 leading-relaxed">
+          Great journeys begin with good preparation and thoughtful choices.
+          Subscribe to receive our latest travel insights, driving guides,
+          and car care tips — curated to help you travel smarter and drive
+          with confidence.
+        </p>
+
+        <p class="text-2xl text-white leading-relaxed mb-8">
+          Whether you’re planning a weekend escape or a long road trip, our
+          editorial stories are designed to inform, inspire, and prepare you
+          for the road ahead.
+        </p>
+
+        <div class="flex justify-center gap-6">
+          <button class="btn-cta"
+                  data-label="Rent a Car"
+                  (click)="onExploreFleet()">
+            Rent a Car
+          </button>
+
+          <button class="btn-cta"
+                  data-label="Become a Host"
+                  (click)="onBecomeHost()">
+            Become a Host
+          </button>
+        </div>
+      </div>
+
+      <div class="overflow-hidden rounded-2xl">
+        <img src="../../../assets/blogs/cta.jfif"
+             alt="Open road inspiration"
+             class="w-full h-130 object-cover" />
+      </div>
+
+    </div>
+  </section>
+</div>

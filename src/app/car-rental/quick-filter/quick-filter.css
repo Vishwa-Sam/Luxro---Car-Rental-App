@@ -1,0 +1,69 @@
+.uiverse-btn {
+  cursor: pointer;
+  position: relative;
+  padding: 30px 29px;
+  font-size: 18px;
+  font-weight: 600;
+
+  color: rgb(193, 163, 98) !important;
+  background-color: transparent;
+
+  border: 2px solid rgb(193, 163, 98);
+  border-radius: 34px;
+
+  overflow: hidden;
+  isolation: isolate;
+
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.uiverse-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+
+  width: 80px;
+  height: 50px;
+  border-radius: inherit;
+
+  background-color: rgb(193, 163, 98);
+  scale: 0;
+  z-index: -1;
+
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.uiverse-btn:not(.active):hover::before {
+  scale: 3;
+}
+
+.uiverse-btn:not(.active):hover {
+  color: #212121 !important;
+  scale: 1.1;
+  box-shadow: 0 0px 20px rgba(193, 163, 98, 0.4);
+}
+
+.uiverse-btn:active {
+  scale: 1;
+}
+
+.uiverse-btn img {
+  filter: brightness(0) saturate(100%) invert(82%) sepia(30%) saturate(550%) hue-rotate(8deg)
+    brightness(95%) contrast(90%);
+  transition: inherit;
+}
+
+.uiverse-btn:not(.active):hover img {
+  filter: brightness(0) saturate(100%);
+}
+
+.uiverse-btn.active {
+  background-color: rgb(193, 163, 98);
+  color: black !important;
+  box-shadow: 0 0px 20px rgba(193, 163, 98, 0.6);
+}
+
+.uiverse-btn.active img {
+  filter: brightness(0) saturate(100%);
+}

@@ -1,0 +1,252 @@
+<div class="space-y-6">
+    <h3 class="text-lg font-bold text-gray-900">Filters</h3>
+
+    <!-- Car Model -->
+    <div class="space-y-2 border-b pb-3">
+        <p class="font-semibold text-gray-800">Car Model</p>
+
+        <label class="flex items-center gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('modelYear', { min: 2019, max: 2020 })"
+                   (change)="onSideFilterChange('modelYear', { min: 2019, max: 2020 }, $event)" />
+            <span>2019 -2020</span>
+        </label>
+
+        <label class="flex items-center gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('modelYear', { min: 2021, max: 2022 })"
+                   (change)="onSideFilterChange('modelYear', { min: 2021, max: 2022 }, $event)" />
+            <span>2021 -2022</span>
+        </label>
+
+        <label class="flex items-center gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('modelYear', { min: 2023, max: 2025 })"
+                   (change)="onSideFilterChange('modelYear', { min: 2023, max: 2025 }, $event)" />
+            <span>2023 -2025</span>
+        </label>
+    </div>
+
+    <!-- Transmission -->
+    <div class="space-y-2 border-b pb-3">
+        <p class="font-semibold text-gray-800">Transmission</p>
+
+        <label class="flex items-center gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('transmission', 'Automatic')"
+                   (change)="onSideFilterChange('transmission', 'Automatic', $event)" />
+            <span>Automatic</span>
+        </label>
+
+        <label class="flex items-center gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('transmission', 'Manual')"
+                   (change)="onSideFilterChange('transmission', 'Manual', $event)" />
+            <span>Manual</span>
+        </label>
+    </div>
+
+    <!-- Fuel Type -->
+    <div class="space-y-2 border-b pb-3">
+        <p class="font-semibold">Fuel Type</p>
+
+        <label class="flex gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('fuelType', 'Petrol')"
+                   (change)="onSideFilterChange('fuelType', 'Petrol', $event)">
+            Petrol
+        </label>
+
+        <label class="flex gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('fuelType', 'Diesel')"
+                   (change)="onSideFilterChange('fuelType', 'Diesel', $event)">
+            Diesel
+        </label>
+
+        <label class="flex gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('fuelType', 'Electric')"
+                   (change)="onSideFilterChange('fuelType', 'Electric', $event)">
+            Electric
+        </label>
+    </div>
+
+    <!-- Car Type -->
+    <div class="space-y-2 border-b pb-3">
+        <p class="font-semibold text-gray-800">Car Type</p>
+
+        <label class="flex items-center gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('carType', 'SUV')"
+                   (change)="onSideFilterChange('carType', 'SUV', $event)" />
+            <span>SUV</span>
+        </label>
+
+        <label class="flex items-center gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('carType', 'Sedan')"
+                   (change)="onSideFilterChange('carType', 'Sedan', $event)" />
+            <span>Sedan</span>
+        </label>
+
+        <label class="flex items-center gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('carType', 'Hatchback')"
+                   (change)="onSideFilterChange('carType', 'Hatchback', $event)" />
+            <span>Hatchback</span>
+        </label>
+
+        <label class="flex items-center gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('carType', 'MPV ')"
+                   (change)="onSideFilterChange('carType', 'MPV', $event)" />
+            <span>MPV</span>
+        </label>
+    </div>
+
+    <!-- Delivery Type -->
+    <div class="space-y-2 border-b pb-3">
+        <p class="font-semibold text-gray-800">Delivery Type</p>
+
+        <label class="flex items-center gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('deliveryType', 'Door Delivery')"
+                   (change)="onSideFilterChange('deliveryType', 'Door Delivery', $event)" />
+            <span>Door Delivery</span>
+        </label>
+
+        <label class="flex items-center gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('deliveryType', 'Self Pickup')"
+                   (change)="onSideFilterChange('deliveryType', 'Self Pickup', $event)" />
+            <span>Self Pickup</span>
+        </label>
+    </div>
+
+    <!-- Seats -->
+    <div class="space-y-2 border-b pb-3">
+        <p class="font-semibold">Seats</p>
+
+        <label class="flex gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('seater', '5')"
+                   (change)="onSideFilterChange('seater', '5', $event)">
+            4 / 5
+        </label>
+
+        <label class="flex gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('seater', '7')"
+                   (change)="onSideFilterChange('seater', '7', $event)">
+            6 / 7
+        </label>
+    </div>
+
+    <!-- Ratings -->
+    <div class="space-y-2 border-b pb-3">
+        <p class="font-semibold text-gray-800">Ratings</p>
+
+        <label class="flex gap-2">
+            <input type="checkbox"
+                   [checked]="isChecked('ratings', { min: 4.8, max: 5 })"
+                   (change)="onSideFilterChange('ratings', { min: 4.8, max: 5 }, $event)">
+            4.8★ & above
+        </label>
+
+        <label class="flex items-center gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('ratings', { min: 4.5, max: 4.8 })"
+                   (change)="onSideFilterChange('ratings', { min: 4.5, max: 4.8 }, $event)" />
+            <span>4.5 ★ - 4.8 ★</span>
+        </label>
+
+        <label class="flex items-center gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('ratings', { min: 4, max: 4.5 })"
+                   (change)="onSideFilterChange('ratings', { min: 4, max: 4.5 }, $event)" />
+            <span>4 ★ - 4.5</span>
+        </label>
+    </div>
+
+    <!-- Luxury -->
+    <div class="space-y-2 border-b pb-3">
+        <p class="font-semibold text-gray-800">Luxury</p>
+
+        <label class="flex items-center gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('luxury', false)"
+                   (change)="onSideFilterChange('luxury', true, $event)" />
+            <span>Luxury Cars Only</span>
+        </label>
+    </div>
+
+    <!-- Price -->
+    <div class="space-y-2 border-b pb-3">
+        <p class="font-semibold text-gray-800">Price (per hour)</p>
+
+        <label class="flex items-center gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('price', { min: 0, max: 100 })"
+                   (change)="onSideFilterChange('price', { min: 0, max: 100 }, $event)" />
+            <span>Below ₹100</span>
+        </label>
+
+        <label class="flex items-center gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('price', { min: 100, max: 150 })"
+                   (change)="onSideFilterChange('price', { min: 100, max: 150 }, $event)" />
+            <span>₹100 - ₹150</span>
+        </label>
+
+        <label class="flex items-center gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('price', { min: 150, max: 200 })"
+                   (change)="onSideFilterChange('price', { min: 150, max: 200 }, $event)" />
+            <span>₹150 - ₹200</span>
+        </label>
+
+        <label class="flex items-center gap-2">
+            <input type="checkbox"
+                   class="cursor-pointer"
+                   [checked]="isChecked('price', { min: 200, max: 1000 })"
+                   (change)="onSideFilterChange('price', { min: 200, max: 1000 }, $event)" />
+            <span>₹200 & above</span>
+        </label>
+    </div>
+
+    <div class="flex gap-3 pt-2">
+        <button type="button"
+                class="btn flex-1"
+                (click)="onClearSideFilter()">
+            Clear All
+        </button>
+        <button type="button"
+                class="btn flex-1">
+            Apply
+        </button>
+    </div>
+
+</div>

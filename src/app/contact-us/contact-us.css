@@ -1,0 +1,268 @@
+html,
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.card {
+  --background: linear-gradient(to right, #74ebd5 0%, #acb6e5 100%);
+  width: 100%;
+  max-width: 390px;
+  height: 310px;
+  padding: 5px;
+  border-radius: 1rem;
+  overflow: visible;
+  background: #74ebd5;
+  background: var(--background);
+  position: relative;
+  z-index: 1;
+}
+
+.card::before,
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  z-index: -1;
+}
+
+.card::before {
+  background: linear-gradient(to bottom right, #14b8a6 0%, #5eead4 100%);
+  transform: rotate(2deg);
+}
+
+.card::after {
+  background: linear-gradient(to top right, #0ea5e9 0%, #67e8f9 100%);
+  transform: rotate(-2deg);
+}
+
+.card-info {
+  --color: #292b2c;
+  background: var(--color);
+  color: var(--color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  border-radius: 0.7rem;
+  position: relative;
+  z-index: 2;
+}
+
+.card .title {
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.card:hover::before,
+.card:hover::after {
+  opacity: 0;
+}
+
+.card:hover .card-info {
+  color: #14b8a6;
+  transition: color 1s;
+}
+
+#SocailIcons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.icons {
+  width: 70px;
+  height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+}
+
+.iconName {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  font-size: 12px;
+  color: #fff;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: transform 0.25s ease;
+  white-space: nowrap;
+}
+
+.icons:hover .iconName {
+  transform: translateX(-50%) scale(1);
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.icon svg {
+  position: relative;
+  z-index: 2;
+}
+
+.icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  height: 0;
+  bottom: 0;
+  transition: height 0.3s ease;
+  z-index: 1;
+}
+
+.icon:hover::before {
+  height: 100%;
+}
+
+.icon:hover {
+  color: #fff;
+}
+.icon {
+  color: #000; 
+}
+
+/* BRAND COLORS */
+
+.icon.insta::before {
+  background: linear-gradient(40deg, #833ab4, #fd1d1d, #fcb045);
+}
+
+.icons.instaIcon:hover .iconName {
+  background: linear-gradient(40deg, #833ab4, #fd1d1d);
+}
+
+.icon.link::before {
+  background: #1da1f2;
+}
+.icons.linkedin:hover .iconName {
+  background: #1da1f2;
+}
+
+.icon.whats::before {
+  background: #0274b3;
+}
+.icons.whatsapp:hover .iconName {
+  background: #0274b3;
+}
+
+.icon.tube::before {
+  background: #1877f2;
+}
+.icons.youtube:hover .iconName {
+  background: #1877f2;
+}
+
+.help-center .grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1200px) {
+  .help-center .grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding-left: 0 !important;
+  }
+
+  .help-center {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .help-center .grid {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .help-center .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .help-center h1 {
+    font-size: 2.2rem;
+  }
+
+  .help-center p {
+    font-size: 1.2rem;
+  }
+
+  footer .grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .help-center .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .help-center section {
+    margin-bottom: 3rem;
+  }
+
+  .help-center button {
+    width: 100%;
+  }
+
+  footer .grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    text-align: center;
+  }
+
+  footer .flex {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+    height: auto;
+  }
+
+  .help-center h1 {
+    font-size: 1.7rem;
+  }
+
+  .help-center h2 {
+    font-size: 1.3rem;
+  }
+
+  .help-center p {
+    font-size: 1rem;
+  }
+
+  .help-center button {
+    padding: 0.9rem;
+  }
+
+  footer .grid {
+    grid-template-columns: 1fr !important;
+  }
+}
