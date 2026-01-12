@@ -1,59 +1,159 @@
-# CarRentalApp
+## 🚗 Luxro – Indian Car Rental Web Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.1.
+Luxro is a modern, full-featured Indian car rental web application built using Angular, TypeScript, Tailwind CSS, and Firebase SDK. The platform delivers a seamless car rental experience with real-time data synchronization, secure authentication, and scalable frontend architecture.
 
-## Development server
+This repository contains the complete frontend application integrated directly with Firebase SDK for authentication and real-time database operations — without using REST APIs.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## 📌 Project Overview
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Luxro is designed to simplify car rentals across India by providing:
 
-## Code scaffolding
+A user-friendly booking experience
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Secure authentication
 
-```bash
-ng generate component component-name
-```
+Real-time data handling
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Host onboarding for car owners
 
-```bash
-ng generate --help
-```
+Informational and career pages
 
-## Building
+Wishlist and checkout flow with confirmation
 
-To build the project run:
+The application follows modern Angular best practices with a scalable and modular architecture.
 
-```bash
-ng build
-```
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## ✨ Features
+User & Content Features
 
-## Running unit tests
+Multiple About and Blog pages
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Career section
 
-```bash
-ng test
-```
+Host onboarding (Become a Host)
 
-## Running end-to-end tests
+Informational and marketing pages
 
-For end-to-end (e2e) testing, run:
+Core Rental Features
 
-```bash
-ng e2e
-```
+Car listing section
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Wishlist management
 
-## Additional Resources
+Checkout with payment processing
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Rental success confirmation page
+
+Authentication & Data
+
+Firebase Authentication
+
+Automatic auth state management
+
+Secure user session handling
+
+Firebase Realtime Database integration
+
+Real-time data synchronization
+
+---
+
+## 🧰 Tech Stack
+
+TypeScript - Type-safe development
+Angular -	Frontend framework
+HTML	- Markup
+Tailwind CSS	- Styling
+Firebase SDK	- Authentication & Realtime Database
+
+---
+
+## 🏗 Project Architecture
+
+Luxro follows a modular Angular architecture:
+
+Components handle UI
+
+Services manage Firebase operations
+
+Guards protect authenticated routes
+
+Models ensure type safety
+
+Routing Module handles navigation
+
+Firebase SDK communicates directly with Angular services, enabling real-time updates without REST API layers.
+
+---
+
+## 🔥 Firebase Configuration
+
+Luxro uses Firebase SDK instead of REST APIs because it provides:
+
+Automatic authentication state management
+
+Enhanced security rules
+
+Offline data persistence
+
+Automatic token refresh
+
+Real-time data synchronization
+
+Reduced boilerplate API handling
+
+Firebase Services Used
+
+Firebase Authentication
+
+Firebase Realtime Database
+
+The SDK handles:
+
+Session restoration
+
+Secure token handling
+
+Live UI updates on database changes
+
+---
+
+## 🚀 Key Features Explained
+### 🔐 Authentication
+
+Firebase email/password login
+
+Auth state auto-sync across app
+
+Route protection via Angular Guards
+
+### 📡 Real-time Database
+
+Live car listings
+
+Wishlist updates in real-time
+
+Booking and checkout persistence
+
+### ❤️ Wishlist
+
+Save favorite cars
+
+Auto sync across sessions
+
+### 💳 Checkout & Confirmation
+
+Booking summary
+
+Payment integration
+
+Successful rental confirmation page
+
+### 🚘 Host Onboarding
+
+Become a host flow
+
+Car listing submission
