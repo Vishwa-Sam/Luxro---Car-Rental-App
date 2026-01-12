@@ -1,8 +1,12 @@
 ## 🚗 Luxro – Indian Car Rental Web Application
 
-Luxro is a modern, full-featured Indian car rental web application built using Angular, TypeScript, Tailwind CSS, and Firebase SDK. The platform delivers a seamless car rental experience with real-time data synchronization, secure authentication, and scalable frontend architecture.
+Luxro is a modern, full-featured car rental web application built with Angular, TypeScript, Tailwind CSS, and Firebase SDK. This is a complete frontend system — not just a landing page — designed to simulate real-world production application behavior.
 
-This repository contains the complete frontend application integrated directly with Firebase SDK for authentication and real-time database operations — without using REST APIs.
+The app integrates Firebase SDK directly for secure authentication, real-time database synchronization, session persistence, and user state management, without using REST APIs. Angular Signals and Firebase listeners ensure instant UI updates and reliable auth state across refreshes and devices.
+
+Key features include user registration and login, protected routes, vehicle listings with real-time availability, booking workflows, profile management, and fully responsive UI design. The project follows clean component architecture and scalable frontend patterns suitable for enterprise-level applications.
+
+Luxro highlights strong frontend engineering skills, modern Angular practices, and real-time cloud integration, making it a solid portfolio project for frontend developer roles.
 
 ---
 
