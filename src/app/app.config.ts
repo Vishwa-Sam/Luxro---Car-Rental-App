@@ -4,6 +4,7 @@ import {
   PreloadAllModules,
   provideRouter,
   withComponentInputBinding,
+  withInMemoryScrolling,
   withPreloading,
 } from '@angular/router';
 
@@ -13,6 +14,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
 
-    provideRouter(routes, withComponentInputBinding(), withPreloading(PreloadAllModules)),
+    provideRouter(routes, withInMemoryScrolling({ scrollPositionRestoration: 'top' }), withComponentInputBinding(), withPreloading(PreloadAllModules)),
   ],
 };
